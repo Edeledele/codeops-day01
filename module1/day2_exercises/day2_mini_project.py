@@ -1,88 +1,42 @@
-# Personal Finance Tracker
+def run():
+    income = 0
+    expense = 0
+
+    menu = """MENU
+    ========== Personal Finance Tracker ==========
+1   Add income
+2   Add expense
+3   Show finance summary
+4   Exit
+    """
+
+    while True:
+        print(menu)
+        choice = input("Choice: ").strip()
+
+        if choice == "12":
+            amount = float(input("Income amount: "))
+            income += amount
+            print(f"Income of {amount} added. Total income: {income}")
+
+        elif choice == "13":
+            amount = float(input("Expense amount: "))
+            expense += amount
+            print(f"Expense of {amount} added. Total expense: {expense}")
+
+        elif choice == "14":
+            print("\n===== Personal Finance Summary =====")
+            print("Income:", income)
+            print("Expense:", expense)
+            print("Balance:", income - expense)
+
+        elif choice == "0":
+            print("Goodbye")
+            break
+
+        else:
+            print("Invalid choice")
 
 
-income = 0
-expense = 0
-
-
-
-def add_income():
-
-    global income
-
-    money = float(input("Enter income: "))
-
-    income += money
-
-
-
-def add_expense():
-
-    global expense
-
-    money = float(input("Enter expense: "))
-
-    expense += money
-
-
-
-def show_balance():
-
-    balance = income - expense
-
-    print("\n===== Summary =====")
-
-    print("Income:", income)
-
-    print("Expense:", expense)
-
-    print("Balance:", balance)
-
-
-
-while True:
-
-
-    print("""
-1. Add Income
-2. Add Expense
-3. Show Balance
-4. Exit
-""")
-
-
-    choice = input("Choose option: ")
-
-
-
-    if choice == "1":
-
-        add_income()
-
-
-
-    elif choice == "2":
-
-        add_expense()
-
-
-
-    elif choice == "3":
-
-        show_balance()
-
-
-
-    elif choice == "4":
-
-        show_balance()
-
-        print("Goodbye")
-
-        break
-
-
-
-    else:
-
-        print("Invalid option")
+if __name__ == "__main__":
+    run()
