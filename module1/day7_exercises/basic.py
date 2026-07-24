@@ -1,198 +1,58 @@
-# Day 6 Basic Exercises
-# SOLID Principles
-
-
-# =====================================
-# 1. Single Responsibility Principle
-# =====================================
-
-
-class Employee:
-
-    def __init__(self,name,salary):
-
-        self.name=name
-        self.salary=salary
-
-
-
-# Salary responsibility
-
-class SalaryCalculator:
-
-
-    def calculate(self,employee):
-
-        return employee.salary
-
-
-
-
-# File responsibility
-
-class EmployeeSaver:
-
-
-    def save(self,employee):
-
-        print(
-            "Saving",
-            employee.name
-        )
-
-
-
-# Email responsibility
-
-class EmailSender:
-
-
-    def send(self,employee):
-
-        print(
-            "Email sent to",
-            employee.name
-        )
-
-
-
-
-employee=Employee(
-    "Genet",
-    5000
-)
-
-
-calculator=SalaryCalculator()
-
-print(
-calculator.calculate(employee)
-)
-
-
-saver=EmployeeSaver()
-
-saver.save(employee)
-
-
-email=EmailSender()
-
-email.send(employee)
-
-
-
-
-
-# =====================================
-# 2. Open Closed Principle
-# =====================================
-
-
-class Bonus:
-
-
-    def bonus(self):
-
-        pass
-
-
-
-
-class Manager(Bonus):
-
-
-    def bonus(self):
-
-        return 5000
-
-
-
-
-class Developer(Bonus):
-
-
-    def bonus(self):
-
-        return 3000
-
-
-
-
-employees=[
-
-Manager(),
-
-Developer()
-
+"""
+Day 7 - Basic Exercises
+DSA I: Linear Structures & Big-O
+-----------------------------------
+Topics: Big-O notation, comparing complexities, lists, dictionaries
+"""
+# Exercise 3: Arrays / Lists
+
+print("=== Exercise 3: Arrays / Lists ===")
+
+students = [
+    "Abebe", "Kebede", "Marta", "Selam", "Dawit",
+    "Ruth", "Yonas", "Hana", "Biruk", "Sara"
 ]
+print("Original list:", students)
 
 
-
-for emp in employees:
-
-    print(
-    emp.bonus()
-    )
+print("Student at index 0:", students[0])
+print("Student at index 4:", students[4])
 
 
+students.append("Meron")
+print("After append('Meron'):", students)
+
+students.insert(0, "Tesfaye")
+print("After insert(0, 'Tesfaye'):", students)
+
+print("\n=== Exercise 4: Hashmaps (Dictionaries) ===")
+
+student_grades = {
+    "Abebe": "A",
+    "Kebede": "B",
+    "Marta": "A",
+    "Selam": "C",
+    "Dawit": "B"
+}
+print("Original grades:", student_grades)
+
+# --- Add a new student -> O(1) average ---
+student_grades["Ruth"] = "A"
+print("After adding Ruth:", student_grades)
+
+# --- Update a grade -> O(1) average ---
+student_grades["Kebede"] = "A"
+print("After updating Kebede's grade:", student_grades)
 
 
+name_to_check = "Marta"
+if name_to_check in student_grades:
+    print(f"{name_to_check} exists with grade: {student_grades[name_to_check]}")
+else:
+    print(f"{name_to_check} not found.")
 
-# =====================================
-# 3. Liskov Substitution Principle
-# =====================================
-
-
-class Bird:
-
-
-    def move(self):
-
-        print("Bird can move")
-
-
-
-
-class FlyingBird(Bird):
-
-
-    def fly(self):
-
-        print("Flying")
-
-
-
-
-class Penguin(Bird):
-
-
-    def swim(self):
-
-        print("Penguin swimming")
-
-
-
-
-
-def make_bird_move(bird):
-
-    bird.move()
-
-
-
-make_bird_move(
-    Penguin()
-)
-
-
-
-
-
-# =====================================
-# 4. SOLID Violation Example
-# =====================================
-
-
-print(
-
-)
+name_to_check = "Yonas"
+if name_to_check in student_grades:
+    print(f"{name_to_check} exists with grade: {student_grades[name_to_check]}")
+else:
+    print(f"{name_to_check} not found.")
