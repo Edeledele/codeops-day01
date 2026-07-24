@@ -1,206 +1,93 @@
-# Addis Bank System Version 2
-# Only this project uses input()
+
+#Day 5 -> Abstract Account (ABC): Savings/Current + statement()
 
 
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
 
+
+class BankConfig:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.interest_rate = 0.05
+            cls._instance.overdraft_limit = 1000
+            cls._instance.large_withdrawal_threshold = 3000
+        return cls._instance
+
+
+class Observer:
+    def update(self, account, amount):
+        raise NotImplementedError
+
+
+class SMSAlert(Observer):
+    def update(self, account, amount):
+        print(f"SMS Alert: large withdrawal of {amount} on {account.name}'s account")
+
+
+class AuditLog(Observer):
+    def update(self, account, amount):
+        print(f"Audit Log: {account.name} withdrew {amount}")
 
 
 class Account(ABC):
+    def __init__(self, number, name, balance=0):
+        self.number = number
+        self.name = name
+        self._balance = balance
+        self._observers = []
 
+    @property
+    def balance(self):
+        return self._balance
 
-    def __init__(self,number,name,balance):
+    def add_observer(self, observer):
+        self._observers.append(observer)
 
-        self.number=number
-        self.name=name
-        self.balance=balance
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
 
+    def withdraw(self, amount):
+        if amount > self._balance:
+            print("Not enough balance")
+            return
+        self._balance -= amount
 
-
-    def deposit(self,amount):
-
-        self.balance+=amount
-
-
-
-    def withdraw(self,amount):
-
-        if amount<=self.balance:
-
-            self.balance-=amount
-
-
+        config = BankConfig()
+        if amount > config.large_withdrawal_threshold:
+            for observer in self._observers:
+                observer.update(self, amount)
 
     @abstractmethod
     def statement(self):
-
         pass
 
 
-
-
-
 class SavingsAccount(Account):
-
-
-    def __init__(self,number,name,balance):
-
-        super().__init__(number,name,balance)
-
-        self.rate=0.05
-
-
-
-    def interest(self):
-
-        self.balance += self.balance*self.rate
-
-
+    def apply_interest(self):
+        config = BankConfig()
+        self._balance += self._balance * config.interest_rate
 
     def statement(self):
-
-        print(
-        "Savings",
-        self.name,
-        self.balance
-        )
-
-
-
-
-
+        print(f"[Savings] {self.number} | {self.name} | Balance: {self._balance}")
 
 
 class CurrentAccount(Account):
-
-
     def statement(self):
-
-        print(
-        "Current",
-        self.name,
-        self.balance
-        )
-
-
-
-
-
-
-accounts={}
-
-
-
-while True:
-
-
-    print("\nAddis Bank")
-
-    print("1 Create Savings")
-
-    print("2 Create Current")
-
-    print("3 Deposit")
-
-    print("4 Withdraw")
-
-    print("5 Statement")
-
-    print("6 Apply Interest")
-
-    print("7 Show All")
-
-    print("8 Exit")
-
-
-
-    choice=input("Choose: ")
-
-
-
-
-    if choice=="1":
-
-        number=input("Account number:")
-
-        name=input("Name:")
-
-
-        accounts[number]=SavingsAccount(
-            number,
-            name,
-            0
-        )
-
-
-
-    elif choice=="2":
-
-        number=input("Account number:")
-
-        name=input("Name:")
-
-
-        accounts[number]=CurrentAccount(
-            number,
-            name,
-            0
-        )
-
-
-
-    elif choice=="3":
-
-        number=input("Account:")
-
-        amount=int(input("Amount:"))
-
-        accounts[number].deposit(amount)
-
-
-
-
-    elif choice=="4":
-
-        number=input("Account:")
-
-        amount=int(input("Amount:"))
-
-        accounts[number].withdraw(amount)
-
-
-
-
-    elif choice=="5":
-
-        number=input("Account:")
-
-        accounts[number].statement()
-
-
-
-
-    elif choice=="6":
-
-        for account in accounts.values():
-
-            if isinstance(account,SavingsAccount):
-
-                account.interest()
-
-
-
-
-    elif choice=="7":
-
-        for account in accounts.values():
-
-            account.statement()
-
-
-
-
-    elif choice=="8":
-
-        break
-    
+        print(f"[Current] {self.number} | {self.name} | Balance: {self._balance}")
+
+
+if __name__ == "__main__":
+    s = SavingsAccount("S001", "Sara", 1000)
+    s.add_observer(SMSAlert())
+    s.add_observer(AuditLog())
+    s.deposit(500)
+    s.apply_interest()
+    s.statement()
+
+    c = CurrentAccount("C001", "Kebede", 2000)
+    c.withdraw(3500)  # triggers observers, above large_withdrawal_threshold
+    c.statement()
