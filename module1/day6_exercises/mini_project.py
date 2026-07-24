@@ -1,206 +1,105 @@
-# Clean Addis Bank System
-# Mini Project
-# Only this file accepts input
+
+#Day 6 -> SOLID + Design Patterns (Singleton, Factory, Observer)
+
+
+from abc import ABC, abstractmethod
 
 
 class BankConfig:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.interest_rate = 0.05
+            cls._instance.overdraft_limit = 1000
+            cls._instance.large_withdrawal_threshold = 3000
+        return cls._instance
 
 
-    interest=0.05
-
-    overdraft=1000
-
-
+class Observer:
+    def update(self, account, amount):
+        raise NotImplementedError
 
 
-
-class Account:
-
-
-    def __init__(self,number,name,balance):
-
-        self.number=number
-        self.name=name
-        self.balance=balance
+class SMSAlert(Observer):
+    def update(self, account, amount):
+        print(f"SMS Alert: large withdrawal of {amount} on {account.name}'s account")
 
 
-
-    def deposit(self,amount):
-
-        self.balance+=amount
-
+class AuditLog(Observer):
+    def update(self, account, amount):
+        print(f"Audit Log: {account.name} withdrew {amount}")
 
 
-    def withdraw(self,amount):
+class Account(ABC):
+    def __init__(self, number, name, balance=0):
+        self.number = number
+        self.name = name
+        self._balance = balance
+        self._observers = []
 
-        if amount<=self.balance:
+    @property
+    def balance(self):
+        return self._balance
 
-            self.balance-=amount
+    def add_observer(self, observer):
+        self._observers.append(observer)
 
-            if amount>3000:
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
 
-                print(
-                "SMS Alert: Large withdrawal"
-                )
+    def withdraw(self, amount):
+        if amount > self._balance:
+            print("Not enough balance")
+            return
+        self._balance -= amount
 
-                print(
-                "Audit Log Created"
-                )
+        config = BankConfig()
+        if amount > config.large_withdrawal_threshold:
+            for observer in self._observers:
+                observer.update(self, amount)
 
-
-
+    @abstractmethod
+    def statement(self):
+        pass
 
 
 class SavingsAccount(Account):
-
-
     def apply_interest(self):
+        config = BankConfig()
+        self._balance += self._balance * config.interest_rate
 
-        self.balance += (
-        self.balance *
-        BankConfig.interest
-        )
-
-
+    def statement(self):
+        print(f"[Savings] {self.number} | {self.name} | Balance: {self._balance}")
 
 
 class CurrentAccount(Account):
-
-
-    pass
-
-
-
+    def statement(self):
+        print(f"[Current] {self.number} | {self.name} | Balance: {self._balance}")
 
 
 class AccountFactory:
-
+    _types = {"saving": SavingsAccount, "current": CurrentAccount}
 
     @staticmethod
-    def create(kind,number,name):
-
-
-        if kind=="saving":
-
-            return SavingsAccount(
-                number,
-                name,
-                0
-            )
-
-
-        else:
-
-            return CurrentAccount(
-                number,
-                name,
-                0
-            )
-
-
-
-
-
-accounts={}
-
-
-
-while True:
-
-
-    print("\nClean Addis Bank")
-
-    print("1 Create Account")
-
-    print("2 Deposit")
-
-    print("3 Withdraw")
-
-    print("4 Show Accounts")
-
-    print("5 Apply Interest")
-
-    print("6 Exit")
-
-
-
-    choice=input("Choice: ")
-
-
-
-
-    if choice=="1":
-
-        number=input("Number: ")
-
-        name=input("Name: ")
-
-        kind=input(
-        "saving/current: "
-        )
-
-
-        accounts[number]=AccountFactory.create(
-            kind,
-            number,
-            name
-        )
-
-
-
-
-    elif choice=="2":
-
-        number=input("Account: ")
-
-        amount=int(
-        input("Amount: ")
-        )
-
-
-        accounts[number].deposit(amount)
-
-
-
-
-    elif choice=="3":
-
-        number=input("Account: ")
-
-        amount=int(
-        input("Amount: ")
-        )
-
-
-        accounts[number].withdraw(amount)
-
-
-
-
-    elif choice=="4":
-
-        for acc in accounts.values():
-
-            print(
-            acc.name,
-            acc.balance
-            )
-
-
-
-
-    elif choice=="5":
-
-        for acc in accounts.values():
-
-            if isinstance(acc,SavingsAccount):
-
-                acc.apply_interest()
-
-
-
-
-    elif choice=="6":
-
-        break
-    
+    def create(kind, number, name):
+        account_class = AccountFactory._types.get(kind, CurrentAccount)
+        account = account_class(number, name, 0)
+        account.add_observer(SMSAlert())
+        account.add_observer(AuditLog())
+        return account
+
+
+if __name__ == "__main__":
+    # Singleton demo
+    cfg1 = BankConfig()
+    cfg2 = BankConfig()
+    print("Singleton check:", cfg1 is cfg2)
+
+    # Factory + Observer demo
+    acc = AccountFactory.create("saving", "S100", "Liya")
+    acc.deposit(4000)
+    acc.withdraw(3500)  # above large_withdrawal_threshold -> observers fire
+    acc.statement()
