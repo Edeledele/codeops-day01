@@ -1,133 +1,36 @@
-# Inventory Manager
-# This project accepts user input
+def run():
+    inventory = {}
 
+    menu = """MENU
+    ========== Inventory Manager (branch asset tracking) ==========
+1  Add/update inventory item
+2  View inventory
+3  Exit
+    """
 
-inventory = {}
+    while True:
+        print(menu)
+        choice = input("Choice: ").strip()
 
+        if choice == "15":
+            item = input("Item name: ")
+            quantity = int(input("Quantity: "))
+            inventory[item] = quantity
+            print("Inventory updated.")
 
+        elif choice == "16":
+            if not inventory:
+                print("No inventory yet.")
+            for item, quantity in inventory.items():
+                print(f"{item}: {quantity}")
 
-while True:
-
-
-    print("\nInventory Manager")
-
-    print("1. Add new product")
-
-    print("2. Update quantity")
-
-    print("3. View products")
-
-    print("4. Save file")
-
-    print("5. Load file")
-
-    print("6. Exit")
-
-
-
-    choice=input("Choose option: ")
-
-
-
-    if choice=="1":
-
-        product=input("Product name: ")
-
-        quantity=int(
-            input("Quantity: ")
-        )
-
-
-        inventory[product]=quantity
-
-
-
-    elif choice=="2":
-
-        product=input(
-            "Product name: "
-        )
-
-
-        if product in inventory:
-
-            quantity=int(
-                input("New quantity: ")
-            )
-
-            inventory[product]=quantity
+        elif choice == "0":
+            print("Goodbye")
+            break
 
         else:
-
-            print("Product not found")
-
+            print("Invalid choice")
 
 
-    elif choice=="3":
-
-        print(inventory)
-
-
-
-    elif choice=="4":
-
-        file=open(
-            "inventory.txt",
-            "w"
-        )
-
-
-        for item,quantity in inventory.items():
-
-            file.write(
-                item+","+str(quantity)+"\n"
-            )
-
-
-        file.close()
-
-
-        print("Saved")
-
-
-
-    elif choice=="5":
-
-        try:
-
-            file=open(
-                "inventory.txt",
-                "r"
-            )
-
-
-            for line in file:
-
-                item,quantity=line.strip().split(",")
-
-                inventory[item]=int(quantity)
-
-
-            file.close()
-
-
-            print("Loaded")
-
-
-        except FileNotFoundError:
-
-            print("No file found")
-
-
-
-    elif choice=="6":
-
-        print("Goodbye")
-
-        break
-
-
-
-    else:
-
-        print("Invalid choice")
+if __name__ == "__main__":
+    run()
