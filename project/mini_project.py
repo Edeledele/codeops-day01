@@ -81,7 +81,10 @@ class AccountFactory:
     _types = {"saving": SavingsAccount, "current": CurrentAccount}
 
     @staticmethod
-    def create(kind, number, name):
+    def create(kind, number, name=None):  # <-- Changed: name is now optional
+        """Create an account - name is optional"""
+        if name is None:  # <-- Added: auto-generate name if not provided
+            name = f"User_{number}"
         account_class = AccountFactory._types.get(kind, CurrentAccount)
         account = account_class(number, name, 0)
         account.add_observer(SMSAlert())
@@ -392,8 +395,8 @@ def run():
 
         elif choice == "7":
             number = input("Account number: ")
-            name = input("Name: ")
-            kind = input("Type (saving/current): ")
+            name = input("Name: ").strip()
+            kind = input("Type (saving/current): ").strip()
             account = AccountFactory.create(kind, number, name)
             accounts.insert(account)
             transfers.add_customer(number)
