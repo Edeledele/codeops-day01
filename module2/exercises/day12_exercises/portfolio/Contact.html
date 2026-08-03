@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Genet Tilahun</title>
+  <meta name="description" content="Contact Genet Tilahun via email, phone, or the contact form below.">
+  <meta name="author" content="Genet Tilahun">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="site-title">GENET TILAHUN
+        <span>Full-Stack Developer in Training</span>
+      </p>
+      <nav class="circuit-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="education.html">Education &amp; Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="contact-info-heading">
+      <h2 id="contact-info-heading">Contact Information</h2>
+      <ul class="contact-list">
+        <li><span>Email:</span> <a href="mailto:genettilahun222@email.com">genettilahun222@email.com</a></li>
+        <li><span>Phone:</span> <a href="tel:+251901024218">+251-9-01-02-42-18</a></li>
+        <li><span>Location:</span> Addis Ababa, Ethiopia</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact-form-heading">
+      <h2 id="contact-form-heading">Send Me a Message</h2>
+
+    
+      <form action="#" method="post">
+
+        <fieldset>
+          <legend>Your details</legend>
+
+          <div class="field">
+            <label for="full-name">Full name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              required
+              minlength="2"
+              maxlength="60"
+              placeholder="hana alemu">
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com">
+           
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Your message</legend>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="" selected disabled>Choose a topic</option>
+              <option value="internship">Internship opportunity</option>
+              <option value="job">Job opportunity</option>
+              <option value="project">Project collaboration</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              minlength="10"
+              maxlength="1000"
+              placeholder="Write your message here..."></textarea>
+          </div>
+
+        </fieldset>
+
+        <button type="submit" class="btn">Send message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Genet Tilahun. Built by hand with HTML &amp; CSS.</p>
+  </footer>
+
+</body>
+</html>

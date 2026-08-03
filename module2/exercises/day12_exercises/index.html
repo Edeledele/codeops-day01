@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Requirement 5 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Day 12 HTML Forms, Tables, Media and Accessibility Exercises">
+    <title>Day 12 - HTML Accessibility Practice | Genet Tilahun</title>
+</head>
+<body>
+
+    <h1>Day 12 HTML Exercises</h1>
+
+    <hr>
+
+    <!-- ================================================= -->
+    <!-- Exercise 1 -->
+    <!-- ================================================= -->
+
+    <h2>1. Ethio Telecom Registration Form</h2>
+
+    <!--
+        POST is used because registration sends user information
+        to a server and should not expose it in the URL.
+    -->
+
+    <form action="#" method="post">
+
+        <label for="fullname">Full Name:</label><br>
+        <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            required>
+
+        <br><br>
+
+        <label for="email">Email:</label><br>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required>
+
+        <br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+251912345678"
+            pattern="^\+2519\d{8}$"
+            required>
+
+        <small>Format: +251912345678</small>
+
+        <br><br>
+
+        <label for="branch">Branch:</label><br>
+
+        <select id="branch" name="branch" required>
+            <option value="">Choose Branch</option>
+            <option>Bole</option>
+            <option>Kazanchis</option>
+            <option>Piassa</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <hr>
+
+    <!-- ================================================= -->
+    <!-- Exercise 2 -->
+    <!-- ================================================= -->
+
+    <h2>2. Ethiopian Airlines Flight Table</h2>
+
+    <table border="1">
+
+        <caption>
+            Ethiopian Airlines Flight Schedule
+        </caption>
+
+        <thead>
+            <tr>
+                <th scope="col">Flight</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Departs</th>
+                <th scope="col">Price (ETB)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>ET101</td>
+                <td>Addis Ababa</td>
+                <td>Bahir Dar</td>
+                <td>08:00</td>
+                <td>4,200</td>
+            </tr>
+
+            <tr>
+                <td>ET202</td>
+                <td>Addis Ababa</td>
+                <td>Dire Dawa</td>
+                <td>09:30</td>
+                <td>3,900</td>
+            </tr>
+
+            <tr>
+                <td>ET303</td>
+                <td>Addis Ababa</td>
+                <td>Hawassa</td>
+                <td>11:15</td>
+                <td>3,500</td>
+            </tr>
+
+            <tr>
+                <td>ET404</td>
+                <td>Addis Ababa</td>
+                <td>Mekele</td>
+                <td>13:45</td>
+                <td>4,800</td>
+            </tr>
+
+            <tr>
+                <td>ET505</td>
+                <td>Addis Ababa</td>
+                <td>Gondar</td>
+                <td>16:00</td>
+                <td>4,400</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <hr>
+
+    <!-- ================================================= -->
+    <!-- Exercise 3 -->
+    <!-- ================================================= -->
+
+    <h2>3. Media Block</h2>
+
+    <figure>
+
+        <img
+            src="C:\Users\Edel\Desktop\codeops\module2\exercises\day12_exercises\assets\lalibela.jfif"
+            alt="Rock-hewn church at Lalibela, Ethiopia"
+            width="500">
+
+        <figcaption>
+            Lalibela - One of Ethiopia's most famous UNESCO World Heritage sites.
+        </figcaption>
+        <img 
+        src="C:\Users\Edel\Desktop\codeops\module2\exercises\day12_exercises\assets\lalibela1.jfif"
+        width="500">
+
+    </figure>
+
+    <br>
+
+    <iframe
+        src="https://www.google.com/maps?q=Lalibela,Ethiopia&output=embed"
+        width="600"
+        height="350"
+        title="Map showing Lalibela, Ethiopia">
+    </iframe>
+
+    <hr>
+
+    <!-- ================================================= -->
+    <!-- Exercise 4 -->
+    <!-- ================================================= -->
+
+    <h2>4. Accessible Version</h2>
+
+    <!--
+        Fix 1:
+        Using a real button makes it keyboard accessible
+        and recognizable by screen readers.
+    -->
+
+    <button type="button">
+        Click Me
+    </button>
+
+    <br><br>
+
+    <!--
+        Fix 2:
+        Adding a label lets screen readers identify
+        what the input is for.
+    -->
+
+    <label for="username">
+        Username:
+    </label>
+
+    <input
+        type="text"
+        id="username"
+        name="username">
+
+    <br><br>
+
+    <!--
+        Fix 3:
+        Alt text describes the image for users
+        who cannot see it.
+    -->
+
+    <img
+        src="C:\Users\Edel\Desktop\codeops\module2\exercises\day12_exercises\assets\AddisAbaba.jfif"
+        alt="City skyline of Addis Ababa"
+        width="500">
+>
+        
+
+
+    <hr>
+
+    <footer>
+        <p>Day 12 HTML Assignment - Genet Tilahun</p>
+    </footer>
+
+</body>
+</html>

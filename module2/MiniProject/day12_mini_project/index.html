@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve a Table | Habesha Eatery, Addis Ababa</title>
+  <meta name="description" content="Book a table at Habesha Eatery in Bole, Addis Ababa, and browse our menu of traditional Ethiopian dishes priced in Ethiopian Birr.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&amp;family=Work+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+          <path d="M9 24c-6-1-6-9-1-11-1-3 1-6 4-6 1-3 6-3 7 0 4 1 4 6 1 8 3 1 3 6-1 8-3 1-8 1-10 1z" fill="#C68B28"/>
+        </svg>
+        Habesha Eatery
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Reservations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Bole, Addis Ababa</p>
+      <h1>Reserve your table at Habesha Eatery</h1>
+      <p>Traditional Ethiopian dishes, slow-brewed coffee, and a warm dining room, ten minutes from Bole International Airport.</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <section aria-labelledby="reservation-heading" class="panel">
+      <h2 id="reservation-heading">Book a table</h2>
+      <form action="#" method="post" novalidate>
+        <p class="required-note">Fields marked <abbr class="req" title="required">*</abbr> are required.</p>
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="res-name">Full name <abbr class="req" title="required">*</abbr></label>
+              <input type="text" id="res-name" name="res-name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="res-email">Email <abbr class="req" title="required">*</abbr></label>
+              <input type="email" id="res-email" name="res-email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="res-phone">Phone number</label>
+              <input type="tel" id="res-phone" name="res-phone" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="res-guests">Party size <abbr class="req" title="required">*</abbr></label>
+              <select id="res-guests" name="res-guests" required>
+                <option value="">Choose a number</option>
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5+">5 or more guests</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Date and time</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="res-date">Date <abbr class="req" title="required">*</abbr></label>
+              <input type="date" id="res-date" name="res-date" required>
+            </div>
+            <div class="field">
+              <label for="res-time">Time <abbr class="req" title="required">*</abbr></label>
+              <input type="time" id="res-time" name="res-time" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything else?</legend>
+          <div class="form-grid">
+            <div class="field full-width">
+              <label for="res-notes">Special requests</label>
+              <textarea id="res-notes" name="res-notes" placeholder="Window seat, allergies, celebrations, etc."></textarea>
+              <span class="hint" id="res-notes-hint">Optional. Let us know about allergies or seating preferences.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit">Request reservation</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="menu-heading" class="panel">
+      <h2 id="menu-heading">Our menu</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Sample menu with prices in Ethiopian Birr (ETB)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dish</th>
+              <th scope="col">Description</th>
+              <th scope="col" class="price">Price (ETB)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Doro Wat</th>
+              <td>Slow-simmered chicken stew in berbere sauce, served with a hard-boiled egg and injera.</td>
+              <td class="price">450</td>
+            </tr>
+            <tr>
+              <th scope="row">Tibs</th>
+              <td>Sautéed beef or lamb with onions, peppers, and rosemary.</td>
+              <td class="price">420</td>
+            </tr>
+            <tr>
+              <th scope="row">Shiro</th>
+              <td>Spiced chickpea stew, a vegan favorite, served with injera.</td>
+              <td class="price">280</td>
+            </tr>
+            <tr>
+              <th scope="row">Vegetarian Combo</th>
+              <td>A sampler of lentils, cabbage, collard greens, and split peas.</td>
+              <td class="price">380</td>
+            </tr>
+            <tr>
+              <th scope="row">Buna Ceremony</th>
+              <td>Traditional coffee ceremony for two, roasted and brewed at your table.</td>
+              <td class="price">250</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="ceremony-heading" class="panel">
+      <h2 id="ceremony-heading">The coffee ceremony</h2>
+      <div class="media-block">
+        <figure>
+          <img src="C:\Users\Edel\Desktop\codeops\module2\MiniProject\day12_mini_project\assets\images.jfif" alt="Illustration of a clay jebena coffee pot beside three small cups on a straw mat, with incense smoke rising nearby.">
+          <figcaption>Every meal ends with a traditional buna ceremony: coffee is roasted, brewed, and poured in three rounds.</figcaption>
+        </figure>
+        <div>
+          <p>Ethiopia is the birthplace of coffee, and at Habesha Eatery the ceremony is part of the meal, not an afterthought. Beans are roasted table-side, ground by hand, and brewed in a clay jebena over hot coals.</p>
+          <p>Ask your server about pairing the ceremony with your reservation, especially for groups of four or more.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <address>
+        Habesha Eatery<br>
+        Bole Road, Addis Ababa, Ethiopia<br>
+        <a href="tel:+251911000000">+251 91 100 0000</a>
+      </address>
+      <nav aria-label="Footer">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1rem;">
+          <li><a href="index.html">Reservations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
