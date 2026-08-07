@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Exercice - Module 2, day 13 </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>CSS Reading sheet - Module 2, day13</h1>
+  </header>
+  <section class="sec">
+    <h1>1. Custom properties &amp; Button</h1>
+    <div class="demo-box">
+      <button class="btn">click me </button>
+    </div>
+
+  </section>
+  <section class="sec">
+    <h2>2. Box Model: content-box vs border-box</h2>
+    <div class="demo-box box-model-demo">
+      <div class="wrapp">
+        <p><strong>content-box </strong><br>rendered width =352px</p>
+        <div class="card content-box outline">300px width, 24px padding, 2px border</div>
+        <div class="wrapper">
+          <p><strong>border-box</strong><br>rendered width = exactly 300px</p>
+          <div class="card border-bod outline">300px width,24px padding, 2px border</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+  <h2>3. Specificity Demo</h2>
+
+  <p class="sec-intro">
+    Three rules all target the same paragraph. Only one color wins —
+    the browser decides using specificity, not source order.
+  </p>
+
+  <table class="specificity-table">
+    <thead>
+      <tr>
+        <th>Selector</th>
+        <th>Rule</th>
+        <th>Specificity (ID-Class-Element)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>p</code></td>
+        <td><code>color: blue;</code></td>
+        <td>0-0-1</td>
+      </tr>
+      <tr>
+        <td><code>.note</code></td>
+        <td><code>color: green;</code></td>
+        <td>0-1-0</td>
+      </tr>
+      <tr class="winner-row">
+        <td><code>#warning</code></td>
+        <td><code>color: red;</code></td>
+        <td>1-0-0 <span class="winner-tag">← wins</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="demo-box">
+    <p id="warning" class="note" title="This element: <p id='warning' class='note'>">
+      I am targeted by all three rules above — and I render red.
+    </p>
+  </div>
+
+  <p class="sec-explain">
+    <strong>Why red?</strong> Specificity is compared left to right as a tuple.
+    Any ID (1-0-0) outranks any number of classes, and any class (0-1-0)
+    outranks any number of element selectors (0-0-1). So
+    <code>#warning</code> wins outright — source order never even comes into play here.
+  </p>
+</section>
+  <section class="sec">
+    <h2>4. Ethiopian Airlines Schedule Table</h2>
+    <div class="demo-bod">
+      <table>
+        <thead>
+          <tr>
+            <th>Flight</th>
+            <th>Route</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Gate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ET 302</td><td>ADD → LHR</td><td>23:55</td><td>06:05</td><td>B4</td></tr>
+          <tr><td>ET 500</td><td>ADD → JFK</td><td>21:40</td><td>06:15</td><td>C2</td></tr>
+          <tr><td>ET 606</td><td>ADD → DXB</td><td>08:20</td><td>13:40</td><td>A7</td></tr>
+          <tr><td>ET 800</td><td>ADD → PEK</td><td>02:10</td><td>16:05</td><td>B1</td></tr>
+          <tr><td>ET 900</td><td>ADD → JNB</td><td>11:30</td><td>15:00</td><td>D3</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="sec">
+    <h2>5. Palette Conversion (rgb/ hs1 + hover shades</h2>
+    <div class="demo-bod palette-demo">
+      <button class="btn btn-green">Green (hover me)</button>
+      <button class="btn btn-dark">dark (hover me)</button>
+      <button class="btn btn-yellow"> yellow (hover me)</button>
+    </div>
+  </section>
+<footer class="page-footer">
+  <p>Property of IBT College Canada · CodeOps Reading Sheet</p>
+</footer>
+
+</body>
+
+</html>

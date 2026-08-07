@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethio-Telecom | Account Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ET</div>
+      <div>
+        <div class="brand-name">Ethio-Telecom</div>
+        <div class="brand-sub">My Account</div>
+      </div>
+    </div>
+
+    <div class="nav-group-label">Overview</div>
+    <a class="nav-item active"><span class="dot"></span> Dashboard</a>
+    <a class="nav-item"><span class="dot"></span> Usage &amp; bills</a>
+    <a class="nav-item"><span class="dot"></span> Recharge</a>
+
+    <div class="nav-group-label">Manage</div>
+    <a class="nav-item"><span class="dot"></span> Data packages</a>
+    <a class="nav-item"><span class="dot"></span> SIM &amp; devices</a>
+    <a class="nav-item"><span class="dot"></span> Family lines</a>
+
+    <div class="nav-group-label">Support</div>
+    <a class="nav-item"><span class="dot"></span> Help center</a>
+    <a class="nav-item"><span class="dot"></span> Settings</a>
+
+    <div class="sidebar-footer">Signed in as +251 91 234 5678</div>
+  </aside>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1>Selam, Betelhem</h1>
+      <p>Here's what's happening with your line today</p>
+    </div>
+    <div class="topbar-right">
+      <div class="search">Search plans, invoices…</div>
+      <div class="bell">🔔<span class="badge">3</span></div>
+      <div class="profile">
+        <div class="avatar">BT<span class="status-dot"></span></div>
+        <div>
+          <div class="profile-name">Betelhem T.</div>
+          <div class="profile-role">Postpaid · Line 1</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="toolbar">
+      <div class="filters">
+        <span class="chip active">This month</span>
+        <span class="chip">Last month</span>
+        <span class="chip">Custom range</span>
+      </div>
+      <button class="btn-primary">Recharge now</button>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="tag">4G</span>
+        <p class="stat-label">Data remaining</p>
+        <p class="stat-value mono">6.4 GB</p>
+        <p class="stat-sub">of 10 GB plan</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Voice minutes</p>
+        <p class="stat-value mono">212</p>
+        <p class="stat-sub">of 500 min plan</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">SMS remaining</p>
+        <p class="stat-value mono">88</p>
+        <p class="stat-sub">of 200 sms plan</p>
+      </div>
+      <div class="stat-card">
+        <span class="tag">Due 24 Aug</span>
+        <p class="stat-label">Current balance</p>
+        <p class="stat-value mono">312.50 ETB</p>
+        <p class="stat-sub">auto-pay enabled</p>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h2>Manage services</h2>
+      <a href="#">View all</a>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">📶</div>
+        <h3>Data bundles</h3>
+        <p>Top up or switch to a bigger data package for the rest of the cycle.</p>
+        <div class="row"><span>3 active</span><span>Manage</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>SIM services</h3>
+        <p>Replace a SIM, port a number, or update your registered ID.</p>
+        <div class="row"><span>1 request</span><span>Manage</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👧</div>
+        <h3>Family lines</h3>
+        <p>Add a line to your plan and share data across the household.</p>
+        <div class="row"><span>2 lines</span><span>Manage</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧾</div>
+        <h3>Billing</h3>
+        <p>Review past invoices and change your preferred payment method.</p>
+        <div class="row"><span>Auto-pay</span><span>Manage</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Roaming</h3>
+        <p>Turn roaming on before you travel and set a spending cap.</p>
+        <div class="row"><span>Off</span><span>Manage</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛎️</div>
+        <h3>Support tickets</h3>
+        <p>Track the status of open requests with customer care.</p>
+        <div class="row"><span>0 open</span><span>Manage</span></div>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h2>Recent activity</h2>
+      <a href="#">Download statement</a>
+    </div>
+    <div class="panel">
+      <div class="usage-row"><span>Data package renewal — 10GB monthly</span><span class="amount">-350.00 ETB</span></div>
+      <div class="usage-row"><span>Recharge via CBE Birr</span><span class="amount">+500.00 ETB</span></div>
+      <div class="usage-row"><span>International SMS bundle</span><span class="amount">-25.00 ETB</span></div>
+      <div class="usage-row"><span>Recharge via Telebirr</span><span class="amount">+200.00 ETB</span></div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Ethio-Telecom · placeholder interface for coursework</span>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Help center</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
