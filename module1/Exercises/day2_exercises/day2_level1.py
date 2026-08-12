@@ -48,8 +48,6 @@ person_age = current_year - birth_year
 
 print(f"\nYour age is {person_age} years old.")
 
-
-
 # If Else
 
 score = 75

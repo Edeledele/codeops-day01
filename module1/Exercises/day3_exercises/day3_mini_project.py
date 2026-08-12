@@ -12,19 +12,19 @@ def run():
         print(menu)
         choice = input("Choice: ").strip()
 
-        if choice == "15":
+        if choice == "1":
             item = input("Item name: ")
             quantity = int(input("Quantity: "))
             inventory[item] = quantity
             print("Inventory updated.")
 
-        elif choice == "16":
+        elif choice == "2":
             if not inventory:
                 print("No inventory yet.")
             for item, quantity in inventory.items():
                 print(f"{item}: {quantity}")
 
-        elif choice == "0":
+        elif choice == "3":
             print("Goodbye")
             break
 

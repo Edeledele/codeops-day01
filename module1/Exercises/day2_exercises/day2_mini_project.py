@@ -14,23 +14,23 @@ def run():
         print(menu)
         choice = input("Choice: ").strip()
 
-        if choice == "12":
+        if choice == "1":
             amount = float(input("Income amount: "))
             income += amount
             print(f"Income of {amount} added. Total income: {income}")
 
-        elif choice == "13":
+        elif choice == "2":
             amount = float(input("Expense amount: "))
             expense += amount
             print(f"Expense of {amount} added. Total expense: {expense}")
 
-        elif choice == "14":
+        elif choice == "3":
             print("\n===== Personal Finance Summary =====")
             print("Income:", income)
             print("Expense:", expense)
             print("Balance:", income - expense)
 
-        elif choice == "0":
+        elif choice == "4":
             print("Goodbye")
             break
 

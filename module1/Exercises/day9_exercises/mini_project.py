@@ -237,7 +237,6 @@ class TransactionHeap:
         return account_number, description, priority
 
 
-# ---------- exercise menu (same choices as the full project) ----------
 def run():
     accounts = AccountBST()
     branches = BranchTree()
