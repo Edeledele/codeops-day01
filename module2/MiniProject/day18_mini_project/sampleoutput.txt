@@ -1,0 +1,20 @@
+========================================
+ TeleBirr Transaction Report — Addis Shop
+========================================
+
+Total Debits:  505 ETB
+Total Credits: 2230 ETB
+Net Movement:  1725 ETB
+
+--- Receipts ---
+#1 Almaz: -250 ETB (debit)
+#2 Dawit: +600 ETB (credit)
+#3 Tigist: -180 ETB (debit)
+#4 Bereket: +1200 ETB (credit)
+#5 Selam: -75 ETB (debit)
+#6 Yonas: +430 ETB (credit)
+
+--- Correcting transaction #3 (Tigist: 180 -> 200 ETB) ---
+original:  { id: 3, customer: 'Tigist', amount: 180, type: 'debit' }
+corrected: { id: 3, customer: 'Tigist', amount: 200, type: 'debit' }
+original unchanged? yes
