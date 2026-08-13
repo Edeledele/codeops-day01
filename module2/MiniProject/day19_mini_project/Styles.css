@@ -1,0 +1,338 @@
+/* ===================================================================
+   Addis Market — design tokens
+   Palette drawn from the market itself: unbleached cotton, deep
+   coffee-leaf green, berbere red, teff gold and indigo thread —
+   the colors of a tibeb-woven cloth border.
+   =================================================================== */
+
+:root {
+  --cotton:     #F6F0E1;   /* page background, unbleached cotton */
+  --cotton-line:#E3D6B8;   /* hairline borders on cotton */
+  --coffee:     #16301F;   /* deep coffee-leaf green, dark surfaces */
+  --coffee-soft:#1F4029;
+  --berbere:    #B5391B;   /* spice red, delete / warnings */
+  --teff:       #D79A2C;   /* teff gold, totals & prices */
+  --indigo:     #2E3A54;   /* body ink */
+  --indigo-soft:#5A6480;
+  --paper:      #FFFCF5;   /* card surface, slightly lighter than page */
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Work Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cotton);
+  color: var(--indigo);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+/* ------------------------------------------------------------------
+   Masthead
+   ------------------------------------------------------------------ */
+
+.masthead {
+  padding: 48px 4px 20px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--berbere);
+  font-weight: 600;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  color: var(--coffee);
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  color: var(--indigo-soft);
+  font-size: 0.98rem;
+}
+
+/* ------------------------------------------------------------------
+   Signature element: the tibeb strip.
+   A woven-border pattern rendered in pure CSS, standing in for the
+   colored bands on a habesha kemis or a market basket's rim.
+   ------------------------------------------------------------------ */
+
+.tibeb-strip {
+  height: 14px;
+  margin: 8px 0 28px;
+  border-radius: 3px;
+   background-size: 56px 100%;
+  opacity: 0.92;
+}
+
+/* ------------------------------------------------------------------
+   Add-item form
+   ------------------------------------------------------------------ */
+
+.add-form {
+  display: grid;
+  grid-template-columns: 1fr 140px auto;
+  gap: 12px;
+  align-items: end;
+  background: var(--paper);
+  border: 1px solid var(--cotton-line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--indigo-soft);
+}
+
+.field input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid var(--cotton-line);
+  border-radius: 8px;
+  background: var(--cotton);
+  color: var(--indigo);
+}
+
+.field-price input {
+  font-family: var(--font-mono);
+}
+
+.field input:focus-visible,
+.btn-add:focus-visible,
+.item .del:focus-visible,
+.item:focus-visible {
+  outline: 3px solid var(--teff);
+  outline-offset: 2px;
+}
+
+.field input.invalid {
+  border-color: var(--berbere);
+  background: #FBEDE7;
+}
+
+.btn-add {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--coffee);
+  color: var(--cotton);
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-add:hover { background: var(--coffee-soft); }
+.btn-add:active { transform: translateY(1px); }
+
+.form-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  min-height: 18px;
+  font-size: 0.85rem;
+  color: var(--berbere);
+}
+
+/* ------------------------------------------------------------------
+   Empty state
+   ------------------------------------------------------------------ */
+
+.empty-state {
+  text-align: center;
+  color: var(--indigo-soft);
+  font-size: 0.95rem;
+  padding: 28px 12px;
+  border: 1px dashed var(--cotton-line);
+  border-radius: var(--radius);
+  margin-top: 18px;
+}
+
+.empty-state.hidden { display: none; }
+
+/* ------------------------------------------------------------------
+   List
+   ------------------------------------------------------------------ */
+
+.list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--paper);
+  border: 1px solid var(--cotton-line);
+  border-left: 4px solid var(--teff);
+  border-radius: 8px;
+  padding: 14px 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.item:hover {
+  background: #FFFEFA;
+  border-left-color: var(--coffee);
+}
+
+.item-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.item-price {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--indigo-soft);
+}
+
+.del {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--berbere);
+  background: transparent;
+  border: 1px solid var(--berbere);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.del:hover {
+  background: var(--berbere);
+  color: var(--cotton);
+}
+
+/* Bought state: a rubber-stamp mark, like a receipt stamped
+   "paid" at the market stall. */
+
+.item.bought {
+  border-left-color: var(--coffee);
+  background: #F1EFE4;
+}
+
+.item.bought .item-name,
+.item.bought .item-price {
+  color: var(--indigo-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--coffee-soft);
+}
+
+.item.bought::after {
+  content: "bought";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coffee-soft);
+  border: 2px solid var(--coffee-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+  transform: translateY(-50%) rotate(-8deg);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.item.bought .del {
+  right: 92px;
+}
+
+@media (max-width: 520px) {
+  .item.bought::after { display: none; }
+}
+
+/* ------------------------------------------------------------------
+   Total bar
+   ------------------------------------------------------------------ */
+
+.total-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: var(--coffee);
+  color: var(--cotton);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+
+.total-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.total-amount {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--teff);
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------ */
+
+@media (max-width: 520px) {
+  .add-form {
+    grid-template-columns: 1fr;
+  }
+  .btn-add { width: 100%; }
+}
+
+/* ------------------------------------------------------------------
+   Motion preference
+   ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

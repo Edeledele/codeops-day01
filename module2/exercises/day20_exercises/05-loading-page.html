@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Loading / Data / Error demo</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+  #status { padding: 16px; border-radius: 8px; border: 1px solid #ddd; }
+  .loading { color: #555; }
+  .error { color: #b00020; background: #fdecea; border-color: #f5c6cb; }
+  .data { color: #14532d; background: #ecfdf3; border-color: #bbf7d0; }
+  button { margin-top: 16px; padding: 8px 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+  <h1>Fetch state demo</h1>
+  <p>Click reload, then toggle your network connection off/on between clicks to see all three states.</p>
+  <div id="status" class="loading">Loading…</div>
+  <button id="reload">Reload</button>
+
+  <script>
+    async function load() {
+      const status = document.getElementById('status');
+      status.className = 'loading';
+      status.textContent = 'Loading…';
+
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+
+        if (!res.ok) {
+          throw new Error(`Server responded with ${res.status}`);
+        }
+
+        const data = await res.json();
+        status.className = 'data';
+        status.textContent = `Loaded: "${data.title}"`;
+      } catch (err) {
+        // Covers both network failures (offline) and non-ok responses thrown above.
+        status.className = 'error';
+        status.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    document.getElementById('reload').addEventListener('click', load);
+    load();
+  </script>
+</body>
+</html>

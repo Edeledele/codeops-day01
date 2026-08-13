@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 19 · DOM Practice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Day 19 — DOM Manipulation Warm-Up</h1>
+    <p class="subtitle">CodeOps · Full Stack Software Development · Module 2</p>
+  </header>
+
+  <main>
+
+    <!-- 1. textContent + classList.toggle -->
+    <section id="ex1">
+      <h2>1. textContent &amp; classList.toggle</h2>
+      <p id="greeting">Original text, untouched.</p>
+      <button id="changeTextBtn">Change text &amp; toggle class</button>
+    </section>
+
+    <!-- 2. createElement + append list items -->
+    <section id="ex2">
+      <h2>2. Ethiopian Cities — createElement</h2>
+      <ul id="cityList"></ul>
+    </section>
+
+    <!-- 3. Event bubbling -->
+    <section id="ex3">
+      <h2>3. Event Bubbling</h2>
+      <div id="outerBox">
+        outer div
+        <button id="bubbleBtn">Click me</button>
+      </div>
+      <p class="hint">Open the console to see both listeners fire.</p>
+    </section>
+
+    <!-- 4. Event delegation with delete buttons -->
+    <section id="ex4">
+      <h2>4. Delegated Delete Listener</h2>
+      <ul id="deleteList">
+        <li>Item one <button class="delete-btn">Delete</button></li>
+        <li>Item two <button class="delete-btn">Delete</button></li>
+        <li>Item three <button class="delete-btn">Delete</button></li>
+        <li>Item four <button class="delete-btn">Delete</button></li>
+      </ul>
+    </section>
+
+    <!-- 5. Form submit -->
+    <section id="ex5">
+      <h2>5. Form Submit — Add to List</h2>
+      <form id="addForm">
+        <input type="text" id="itemInput" placeholder="Type something..." />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="formList"></ul>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
