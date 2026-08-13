@@ -1,0 +1,511 @@
+/* ============================================================
+   Habesha Eatery — stylesheet
+   Design notes: palette pulls from berbere (rust), roasted buna
+   (dark coffee brown), teff/injera (warm cream), and the gold and
+   green threads found in tibeb textile borders. The woven strip
+   used at the top of the page and between sections is a nod to
+   the tibeb pattern on a habesha kemis hem — the one bold,
+   signature device on an otherwise quiet page.
+   ============================================================ */
+
+:root {
+  --color-bg: #FBF6EC;
+  --color-panel: #FFFFFF;
+  --color-ink: #2B1810;
+  --color-ink-soft: #6B5A4C;
+  --color-rust: #A33B20;
+  --color-rust-dark: #7C2C16;
+  --color-gold: #C89B3C;
+  --color-green: #3D5C3A;
+  --color-cream: #EFE4C9;
+  --color-line: #DFD0AC;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', 'Segoe UI', sans-serif;
+
+  --radius: 6px;
+  --shadow-panel: 0 1px 2px rgba(43, 24, 16, 0.06), 0 8px 24px rgba(43, 24, 16, 0.06);
+  --max-width: 920px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-rust-dark);
+}
+
+a:hover {
+  color: var(--color-rust);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ---------- skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-ink);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- tibeb strip (signature device) ---------- */
+
+.site-header::before,
+.site-footer::before {
+  content: "";
+  display: block;
+  height: 10px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--color-rust) 0 9px,
+      var(--color-gold) 9px 18px,
+      var(--color-green) 18px 27px,
+      var(--color-cream) 27px 36px
+    );
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  background: var(--color-ink);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.primary-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.primary-nav a {
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+
+.primary-nav a:hover,
+.primary-nav a[aria-current="page"] {
+  color: #fff;
+  border-bottom-color: var(--color-gold);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  background: linear-gradient(180deg, var(--color-ink) 0%, #3a241a 100%);
+  color: var(--color-cream);
+}
+
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3.25rem 1.5rem 3.75rem;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.12;
+  margin: 0 0 1rem;
+  max-width: 18ch;
+  color: #fff;
+}
+
+.hero p {
+  max-width: 52ch;
+  font-size: 1.05rem;
+  color: var(--color-cream);
+  margin: 0;
+}
+
+/* ---------- layout / panels ---------- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel);
+  padding: 2rem;
+  margin: 2.5rem 0;
+}
+
+.panel h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-rust-dark);
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.panel h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 2px;
+}
+
+/* ---------- forms ---------- */
+
+form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+}
+
+form legend {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  padding: 0 0 1rem;
+  width: 100%;
+  border-bottom: 1px solid var(--color-line);
+  margin-bottom: 1.25rem;
+}
+
+.required-note {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin: 0 0 1.5rem;
+}
+
+.req {
+  color: var(--color-rust);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-rust);
+  background: #fff;
+}
+
+.hint {
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+}
+
+button[type="submit"] {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--color-rust);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.85rem 1.75rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  background: var(--color-rust-dark);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* ---------- tables (menu, hours) ---------- */
+
+.table-scroll {
+  overflow-x: auto;
+  border-top: 3px solid var(--color-gold);
+  border-radius: 2px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+caption {
+  text-align: left;
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+  padding: 0.6rem 0.2rem;
+  caption-side: top;
+}
+
+thead th {
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-soft);
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+tbody th,
+tbody td {
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+
+tbody th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-rust-dark);
+  white-space: nowrap;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.price {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- coffee ceremony media block ---------- */
+
+.media-block {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.media-block figure {
+  margin: 0;
+}
+
+.media-block img {
+  border-radius: var(--radius);
+  border: 1px solid var(--color-line);
+}
+
+.media-block figcaption {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+.media-block p {
+  margin: 0 0 1rem;
+}
+
+.media-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- contact / find us ---------- */
+
+#find-us-heading + address,
+address {
+  font-style: normal;
+  line-height: 1.7;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  margin-top: 3rem;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-inner address {
+  color: var(--color-cream);
+  font-size: 0.9rem;
+}
+
+.footer-inner a {
+  color: var(--color-cream);
+}
+
+.footer-inner a:hover {
+  color: var(--color-gold);
+}
+
+.footer-inner nav a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-block {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 1.5rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .primary-nav ul {
+    gap: 1.25rem;
+  }
+}
