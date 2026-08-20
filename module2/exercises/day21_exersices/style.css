@@ -1,0 +1,233 @@
+:root {
+  --bg: #F5EFE3;
+  --text: #2B1D14;
+  --text-soft: #6B5A46;
+  --card-bg: #FFFCF6;
+  --border: #D8C9AE;
+  --gold: #C9962C;
+  --gold-strong: #A97A1C;
+  --green: #3F6B4F;
+  --error: #B23A2E;
+  --error-bg: #FBEAE7;
+  --shadow: 0 20px 50px -25px rgba(43, 29, 20, 0.45);
+}
+
+html[data-theme="dark"] {
+  --bg: #1B140E;
+  --text: #F0E6D6;
+  --text-soft: #C7B79E;
+  --card-bg: #241B13;
+  --border: #3A2C1E;
+  --gold: #E0B85C;
+  --gold-strong: #F0CE85;
+  --green: #5C9370;
+  --error: #E88579;
+  --error-bg: #3A211D;
+  --shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Iowan Old Style', 'Georgia', 'Palatino Linotype', serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tilet-strip {
+  height: 10px;
+  width: 100%;
+
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.brand-mark {
+  font-size: 1.3rem;
+}
+
+.brand-name {
+  font-size: 1.05rem;
+}
+
+.toggles {
+  display: flex;
+  gap: 10px;
+}
+
+.pill-toggle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.pill-toggle:hover {
+  border-color: var(--gold);
+}
+
+.pill-toggle:active {
+  transform: scale(0.97);
+}
+
+.pill-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 80px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 34px 30px;
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold-strong);
+  margin: 0 0 10px;
+}
+
+.headline {
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+
+.subhead {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 26px;
+}
+
+.field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field input {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.95rem;
+  padding: 11px 13px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.hint {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-soft);
+}
+
+.error-area {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  min-height: 20px;
+  color: var(--error);
+  margin-bottom: 14px;
+}
+
+.error-area:not(:empty) {
+  background: var(--error-bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.submit-btn {
+  width: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 16px;
+  border-radius: 9px;
+  border: none;
+  background: var(--gold);
+  color: #241B13;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.submit-btn:hover {
+  background: var(--gold-strong);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.count-line {
+  font-family: 'Inter', system-ui, sans-serif;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  margin: 20px 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .pill-toggle,
+  .submit-btn,
+  body {
+    transition: none;
+  }
+}

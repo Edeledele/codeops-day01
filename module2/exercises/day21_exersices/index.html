@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addis Meetup — Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="tilet-strip" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">☕</span>
+      <span class="brand-name" data-i18n="brandName">Addis Makers Meetup</span>
+    </div>
+    <div class="toggles">
+      <button id="langToggle" class="pill-toggle" type="button" aria-label="Switch language">
+        <span data-i18n="langToggleLabel">አማ / EN</span>
+      </button>
+      <button id="themeToggle" class="pill-toggle" type="button" aria-label="Switch theme">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel" data-i18n="themeDark">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="card">
+      <p class="eyebrow" data-i18n="eyebrow">Monthly gathering · Bole, Addis Ababa</p>
+      <h1 class="headline" data-i18n="headline">Reserve your seat at the table</h1>
+      <p class="subhead" data-i18n="subhead">Tell us who you are and how to reach you. We'll save your spot.</p>
+
+      <form id="signupForm" novalidate>
+        <div class="field">
+          <label for="nameInput" data-i18n="nameLabel">Full name</label>
+          <input type="text" id="nameInput" name="name" autocomplete="name" placeholder="Almaz Tesfaye">
+        </div>
+
+        <div class="field">
+          <label for="phoneInput" data-i18n="phoneLabel">Phone number</label>
+          <input type="tel" id="phoneInput" name="phone" autocomplete="tel" placeholder="0912345678">
+          <span class="hint" data-i18n="phoneHint">Ethiopian mobile: 09XXXXXXXX or +2519XXXXXXXX</span>
+        </div>
+
+        <div id="errorArea" class="error-area" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="submit-btn" data-i18n="submitLabel">Save my seat</button>
+      </form>
+
+      <p class="count-line">
+        <span id="countText" data-i18n-count="0">0 people have signed up</span>
+      </p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
