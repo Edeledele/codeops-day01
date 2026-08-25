@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birr Watch — ETB Exchange Rates</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Birr Watch</h1>
+      <p class="subtitle">Live Ethiopian Birr (ETB) exchange rates</p>
+    </header>
+
+    <main>
+      <!-- Status area: loading / error messages -->
+      <section id="status" class="status" aria-live="polite"></section>
+
+      <!-- Converter -->
+      <section class="card">
+        <h2>Convert</h2>
+        <form id="convert-form">
+          <div class="field">
+            <label for="amount">Amount in ETB</label>
+            <input type="text" id="amount" placeholder="e.g. 100" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="currency">To currency</label>
+            <select id="currency"></select>
+          </div>
+          <button type="submit">Convert</button>
+        </form>
+        <p id="convert-error" class="error-text" role="alert"></p>
+        <p id="convert-result" class="result-text"></p>
+      </section>
+
+      <!-- Watchlist -->
+      <section class="card">
+        <h2>Watchlist</h2>
+        <div class="watchlist-add">
+          <select id="watchlist-currency"></select>
+          <button id="watchlist-add-btn" type="button">Add to watchlist</button>
+        </div>
+        <ul id="watchlist" class="watchlist"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rates from <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener">exchangerate-api.com</a> (open endpoint, base ETB).</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
