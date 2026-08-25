@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birr Watch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Birr Watch</h1>
+      <p>Live Ethiopian Birr (ETB) exchange rates</p>
+    </header>
+
+    <main>
+      <section id="converter">
+        <h2>Convert</h2>
+        <form id="convert-form">
+          <input
+            id="amount"
+            type="number"
+            value="100"
+            min="0"
+            step="any"
+            placeholder="Enter amount"
+            required
+          />
+          <select id="currency"></select>
+          <button type="submit">Convert</button>
+          <button id="add-watch" type="button">Add to Watchlist</button>
+        </form>
+        <p id="result"></p>
+      </section>
+
+      <section id="watchlist-section">
+        <h2>Watchlist</h2>
+        <p id="status"></p>
+        <div id="watchlist" class="grid"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
