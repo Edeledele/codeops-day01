@@ -5,16 +5,6 @@
 
 const STORAGE_KEY = 'budgetApp.transactions';
 
-const CATEGORY_ICONS = {
-    Food: '🍔',
-    Transport: '🚌',
-    Bills: '🧾',
-    Shopping: '🛍️',
-    Entertainment: '🎬',
-    Other: '📦',
-    Income: '💰'
-};
-
 const CATEGORY_COLORS = {
     Food: '#f59e0b',
     Transport: '#3b82f6',
@@ -232,17 +222,16 @@ function renderTable() {
 
     filtered.forEach(t => {
         const row = document.createElement('tr');
-        const icon = CATEGORY_ICONS[t.category] || '📦';
         row.innerHTML = `
             <td><span class="badge badge-${t.type}">${t.type}</span></td>
             <td>${escapeHtml(t.description)}</td>
-            <td><span class="category-chip">${icon} ${escapeHtml(t.category)}</span></td>
+            <td><span class="category-chip">${escapeHtml(t.category)}</span></td>
             <td class="${t.type === 'income' ? 'income-amount' : 'expense-amount'}">
                 ${t.type === 'income' ? '+' : '-'}${formatCurrency(t.amount)}
             </td>
             <td>${formatDate(t.date)}</td>
             <td>
-                <button class="btn-delete" title="Delete transaction" data-id="${t.id}">🗑️</button>
+                <button class="btn-delete" title="Delete transaction" data-id="${t.id}">Delete</button>
             </td>
         `;
         transactionList.appendChild(row);
@@ -276,13 +265,12 @@ function renderBreakdown() {
     sorted.forEach(([category, amount]) => {
         const pct = totalExpense > 0 ? (amount / totalExpense) * 100 : 0;
         const color = CATEGORY_COLORS[category] || '#64748b';
-        const icon = CATEGORY_ICONS[category] || '📦';
 
         const row = document.createElement('div');
         row.className = 'breakdown-row';
         row.innerHTML = `
             <div class="breakdown-label">
-                <span>${icon} ${escapeHtml(category)}</span>
+                <span>${escapeHtml(category)}</span>
                 <span>${formatCurrency(amount)} · ${pct.toFixed(0)}%</span>
             </div>
             <div class="breakdown-bar-track">
