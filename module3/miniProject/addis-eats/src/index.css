@@ -1,0 +1,118 @@
+:root {
+  --ink: #2B1B12;
+  --rust: #8B3A2F;
+  --turmeric: #C48A17;
+  --cream: #EFE6D8;
+  --paper: #FBF7EF;
+  --line: rgba(43, 27, 18, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.header {
+  text-align: left;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.header-kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--rust);
+  letter-spacing: 0.02em;
+}
+
+.header-title {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.header-tagline {
+  margin: 0.6rem 0 0;
+  font-size: 1.05rem;
+  color: rgba(43, 27, 18, 0.75);
+  max-width: 32ch;
+}
+
+.menu-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0 0 1.25rem;
+  color: var(--rust);
+}
+
+.menu-list {
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.dish {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.dish:last-child {
+  border-bottom: none;
+}
+
+.dish-text {
+  min-width: 0;
+}
+
+.dish-name {
+  margin: 0 0 0.3rem;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.dish-description {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(43, 27, 18, 0.65);
+}
+
+.dish-price {
+  margin: 0;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--turmeric);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 2.3rem;
+  }
+
+  .dish {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
