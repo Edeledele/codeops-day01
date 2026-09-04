@@ -1,11 +1,11 @@
 import '../css/style.css'
- 
+
 
 function Header() {
   return (
-    <div className="card">
+    <header className="site-header">
       <h1>Menu</h1>
-    </div>
+    </header>
   )
 }
 

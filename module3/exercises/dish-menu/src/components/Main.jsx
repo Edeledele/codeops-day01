@@ -1,25 +1,66 @@
-import React from "react"
-import Dish from './Dish'
+import Dish from "./Dish";
+import Card from "./Card";
+import menu from "./Data";
 
 
-const dishes = [
-  { id: 1, name: 'Doro Wat', price: 120 },
-  { id: 2, name: 'Ful Medames', price: 800 },
-  { id: 3, name: 'Tibs', price: 60 },
-  { id: 4, name: 'Kitfo', price: 60 },
-  { id: 5, name: 'Niter Kibbeh', price: 60 },
-  { id:6, name:'Chechebsa', price:150},
-  { id:7, name:'Rice & Chicken', price:350}
-]
+function FeaturedDish() {
+  const featured = menu[0];
+  return (
+    <Card>
+      <Dish name={featured.name} price={featured.price} spicy={featured.spicy} />
+    </Card>
+  );
+}
+
+function MenuSection({ category }) {
+  const filtered = menu.filter((dish) => dish.category === category);
+
+  if (filtered.length === 0) {
+    return <p className="menu-empty">No dishes found in "{category}".</p>;
+  }
+
+  return (
+    <div className="menu-grid">
+      {filtered.map((dish) => (
+
+        <Card key={dish.id}>
+          <Dish name={dish.name} price={dish.price} spicy={dish.spicy} />
+        </Card>
+      ))}
+    </div>
+  );
+}
 
 function Main() {
   return (
-    <div className="dish">
-      {dishes.map((dish) => (
-        <Dish key={dish.id} name={dish.name} price={dish.price} />
-      ))}
-    </div>
-  )
+    <main className="menu">
+      <section>
+        <h2>Featured</h2>
+        <FeaturedDish />
+      </section>
+
+      <section>
+        <h2>Mains</h2>
+        <MenuSection category="mains" />
+      </section>
+
+      <section>
+        <h2>Sides</h2>
+        <MenuSection category="sides" />
+      </section>
+
+      <section>
+        <h2>Drinks</h2>
+        <MenuSection category="drinks" />
+      </section>
+
+      <section>
+        <h2>Desserts</h2>
+        {/* No desserts in the data yet — exercises the empty state. */}
+        <MenuSection category="desserts" />
+      </section>
+    </main>
+  );
 }
 
-export default Main
+export default Main;
