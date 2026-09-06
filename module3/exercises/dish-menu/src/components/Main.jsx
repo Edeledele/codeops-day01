@@ -1,65 +1,64 @@
-import Dish from "./Dish";
+import { useEffect, useMemo, useRef, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useFetch } from "./Usefeth";
+import { CartContext } from "./Cartcontext";
+import { categories } from "./Data";
+import CategoryBar from "./Categorybar";
 import Card from "./Card";
-import menu from "./Data";
-
-
-function FeaturedDish() {
-  const featured = menu[0];
-  return (
-    <Card>
-      <Dish name={featured.name} price={featured.price} spicy={featured.spicy} />
-    </Card>
-  );
-}
-
-function MenuSection({ category }) {
-  const filtered = menu.filter((dish) => dish.category === category);
-
-  if (filtered.length === 0) {
-    return <p className="menu-empty">No dishes found in "{category}".</p>;
-  }
-
-  return (
-    <div className="menu-grid">
-      {filtered.map((dish) => (
-
-        <Card key={dish.id}>
-          <Dish name={dish.name} price={dish.price} spicy={dish.spicy} />
-        </Card>
-      ))}
-    </div>
-  );
-}
+import Dish from "./Dish";
 
 function Main() {
+  // Category lives in the URL (?category=Drinks) so it's shareable/bookmarkable.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category") ?? "All";
+
+  const { data: dishes, loading, error } = useFetch("/dishes.json");
+  const { total } = useContext(CartContext);
+
+  const searchRef = useRef(null);
+
+  // Focus the search box once, right after the DOM node exists.
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
+
+  const filtered = useMemo(() => {
+    if (!dishes) return [];
+    return category === "All" ? dishes : dishes.filter((d) => d.category === category);
+  }, [dishes, category]);
+
+  // Keep the tab title in sync with how many dishes are currently shown.
+  useEffect(() => {
+    document.title = `${filtered.length} dishes`;
+  }, [filtered.length]);
+
+  function handleSelectCategory(next) {
+    setSearchParams(next === "All" ? {} : { category: next });
+  }
+
+  if (loading) return <p>Loading menu...</p>;
+  if (error) return <p>Something went wrong: {error}</p>;
+
   return (
-    <main className="menu">
-      <section>
-        <h2>Featured</h2>
-        <FeaturedDish />
-      </section>
+    <div className="menu">
+      <input ref={searchRef} type="search" placeholder="Search dishes..." />
 
-      <section>
-        <h2>Mains</h2>
-        <MenuSection category="mains" />
-      </section>
+      <CategoryBar categories={categories} selected={category} onSelect={handleSelectCategory} />
 
-      <section>
-        <h2>Sides</h2>
-        <MenuSection category="sides" />
-      </section>
+      {filtered.length === 0 ? (
+        <p>No dishes found in this category.</p>
+      ) : (
+        <div className="dish-list">
+          {filtered.map((dish) => (
+            <Card key={dish.id}>
+              <Dish {...dish} />
+            </Card>
+          ))}
+        </div>
+      )}
 
-      <section>
-        <h2>Drinks</h2>
-        <MenuSection category="drinks" />
-      </section>
-
-      <section>
-        <h2>Desserts</h2>
-        {/* No desserts in the data yet — exercises the empty state. */}
-        <MenuSection category="desserts" />
-      </section>
-    </main>
+      <p className="order-total">Order total: {total} ETB</p>
+    </div>
   );
 }
 

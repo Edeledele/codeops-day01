@@ -1,0 +1,22 @@
+[
+  { "id": 1, "name": "Doro Wat", "price": 250, "category": "Main", "spicy": true },
+  { "id": 2, "name": "Tibs", "price": 220, "category": "Main", "spicy": true },
+  { "id": 3, "name": "Shiro", "price": 150, "category": "Main", "spicy": false },
+  { "id": 4, "name": "Kitfo", "price": 280, "category": "Main", "spicy": true },
+  { "id": 5, "name": "Ambo Water", "price": 40, "category": "Drinks", "spicy": false },
+  { "id": 6, "name": "Macchiato", "price": 35, "category": "Drinks", "spicy": false },
+  { "id": 7, "name": "Baklava", "price": 90, "category": "Dessert", "spicy": false },
+  { "id": 8, "name": "Ayib", "price": 50, "category": "Main", "spicy": false },
+  { "id": 9, "name": "Coca Cola", "price": 35, "category": "Drinks", "spicy": false },
+  { "id": 10, "name": "Gomen", "price": 50, "category": "Main", "spicy": false },
+  { "id": 11, "name": "Teff Injera", "price": 35, "category": "Main", "spicy": false },
+  { "id": 12, "name": "Tea", "price": 20, "category": "Drinks", "spicy": false },
+  { "id": 13, "name": "Coffee", "price": 20, "category": "Drinks", "spicy": false },
+  { "id": 14, "name": "Sugar", "price": 20, "category": "Main", "spicy": false },
+  { "id": 15, "name": "Bread", "price": 35, "category": "Main", "spicy": false },
+  { "id": 16, "name": "Avocado", "price": 35, "category": "Main", "spicy": false },
+  { "id": 17, "name": "Cake", "price": 40, "category": "Dessert", "spicy": false },
+  { "id": 18, "name": "Pie", "price": 40, "category": "Dessert", "spicy": false },
+  { "id": 19, "name": "Teff Injera", "price": 35, "category": "Main", "spicy": false },
+  { "id": 20, "name": "Ayib", "price": 50, "category": "Main", "spicy": false }
+]

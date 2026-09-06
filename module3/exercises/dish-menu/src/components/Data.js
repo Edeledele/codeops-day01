@@ -1,13 +1,14 @@
-const menu = [
-  { id: 1, name: 'Doro Wat', price: 120, category: 'mains', spicy: true },
-  { id: 2, name: 'Ful Medames', price: 80, category: 'mains', spicy: false },
-  { id: 3, name: 'Tibs', price: 160, category: 'mains', spicy: true },
-  { id: 4, name: 'Kitfo', price: 200, category: 'mains', spicy: true },
-  { id: 5, name: 'Niter Kibbeh', price: 60, category: 'sides', spicy: false },
-  { id: 6, name: 'Chechebsa', price: 150, category: 'sides', spicy: false },
-  { id: 7, name: 'Rice & Chicken', price: 350, category: 'mains', spicy: false },
-  { id: 8, name: 'Tej', price: 50, category: 'drinks', spicy: false },
-  { id: 9, name: 'Coffee', price: 20, category: 'drinks', spicy: false }
-];
+// Fallback/seed data. The real list is served from /public/dishes.json
+// and loaded with the useFetch hook (see src/hooks/useFetch.js).
 
-export default menu;
+export const categories = ["All", "Main", "Drinks", "Dessert"];
+
+export const dishes = [
+  { id: 1, name: "Doro Wat", price: 250, category: "Main", spicy: true },
+  { id: 2, name: "Tibs", price: 220, category: "Main", spicy: true },
+  { id: 3, name: "Shiro", price: 150, category: "Main", spicy: false },
+  { id: 4, name: "Kitfo", price: 280, category: "Main", spicy: true },
+  { id: 5, name: "Ambo Water", price: 40, category: "Drinks", spicy: false },
+  { id: 6, name: "Macchiato", price: 35, category: "Drinks", spicy: false },
+  { id: 7, name: "Baklava", price: 90, category: "Dessert", spicy: false },
+];
