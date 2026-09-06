@@ -1,0 +1,338 @@
+/* Addis Eats — palette drawn from coffee, berbere and teff rather than
+   a generic SaaS theme: roasted browns, turmeric gold, injera cream. */
+
+:root {
+  --bg: #FBF6EC;
+  --surface: #FFFFFF;
+  --text: #2B1B14;
+  --muted: #7A6A5C;
+  --accent: #C98A2C;
+  --accent-dark: #9C6A1E;
+  --green: #2F5233;
+  --border: #E7DCC8;
+  --error: #B3261E;
+  --radius: 10px;
+}
+
+:root[data-theme="dark"] {
+  --bg: #201410;
+  --surface: #2B1B14;
+  --text: #F5EFE3;
+  --muted: #C7B7A3;
+  --accent: #E0A93F;
+  --accent-dark: #C98A2C;
+  --green: #6E9B72;
+  --border: #4A362B;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  line-height: 1.5;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: 1.25rem;
+  flex: 1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a.nav-active {
+  border-bottom-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.cart-badge {
+  display: inline-block;
+  margin-left: 0.3rem;
+  background: var(--green);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+
+.theme-toggle, .link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+/* Hero */
+.hero {
+  text-align: left;
+  max-width: 40ch;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--accent);
+  color: #201410;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+/* Category bar */
+.category-bar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.5rem;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+.chip-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+
+/* Cards & dishes */
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+}
+
+.dish h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+
+.price {
+  color: var(--accent-dark);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.badge {
+  color: var(--error);
+  font-size: 0.75rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.add-btn, .order-form button, .cta-btn {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.add-btn {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.remove-btn-dish {
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+}
+
+/* Status / errors */
+.status {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.status-error {
+  color: var(--error);
+}
+
+.field-error {
+  display: block;
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+/* Forms */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 360px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.order-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.order-form input {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.order-form button {
+  align-self: flex-start;
+  background: var(--accent);
+  color: #201410;
+  border: none;
+  padding: 0.55rem 1.3rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.order-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--error);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.total {
+  font-weight: 700;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1.2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}

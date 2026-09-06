@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "price": 240,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 2,
+    "name": "Shiro",
+    "price": 150,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 3,
+    "name": "Tibs",
+    "price": 220,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 4,
+    "name": "Kitfo",
+    "price": 260,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 5,
+    "name": "Misir Wat",
+    "price": 130,
+    "category": "Vegan",
+    "spicy": true
+  },
+  {
+    "id": 6,
+    "name": "Gomen",
+    "price": 120,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 7,
+    "name": "Zilzil Tibs",
+    "price": 230,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 8,
+    "name": "Beyaynetu",
+    "price": 180,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 9,
+    "name": "Doro Wat",
+    "price": 240,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 10,
+    "name": "Shiro",
+    "price": 150,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 11,
+    "name": "Tibs",
+    "price": 220,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 12,
+    "name": "Kitfo",
+    "price": 260,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 13,
+    "name": "Misir Wat",
+    "price": 130,
+    "category": "Vegan",
+    "spicy": true
+  },
+  {
+    "id": 14,
+    "name": "Gomen",
+    "price": 120,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 15,
+    "name": "Zilzil Tibs",
+    "price": 230,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 16,
+    "name": "Beyaynetu",
+    "price": 180,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 17,
+    "name": "Doro Wat",
+    "price": 240,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 18,
+    "name": "Shiro",
+    "price": 150,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 19,
+    "name": "Tibs",
+    "price": 220,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 20,
+    "name": "Kitfo",
+    "price": 260,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 21,
+    "name": "Misir Wat",
+    "price": 130,
+    "category": "Vegan",
+    "spicy": true
+  },
+  {
+    "id": 22,
+    "name": "Gomen",
+    "price": 120,
+    "category": "Vegan",
+    "spicy": false
+  },
+  {
+    "id": 23,
+    "name": "Zilzil Tibs",
+    "price": 230,
+    "category": "Grill",
+    "spicy": true
+  },
+  {
+    "id": 24,
+    "name": "Beyaynetu",
+    "price": 180,
+    "category": "Vegan",
+    "spicy": false
+  }
+]

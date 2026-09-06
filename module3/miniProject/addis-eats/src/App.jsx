@@ -1,26 +1,33 @@
-import Header from './components/Header.jsx'
-import Dish from './components/Dish.jsx'
-import dishes from './data/dishes.js'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./components/Themecontext";
+import { CartProvider } from "./components/Cartcontext";
+
+import Layout from "./components/Layout";
+import Menu from "./components/Menu";
+import DishPage from "./components/Dishpage";
+import Checkout from "./components/Checkout";
+import NotFound from "./components/Notfound";
+
+import "./css/App.css";
 
 function App() {
   return (
-    <div className="page">
-      <Header />
-      <main className="menu">
-        <h2 className="menu-heading">Today's Menu</h2>
-        <div className="menu-list">
-          {dishes.map((dish) => (
-            <Dish
-              key={dish.id}
-              name={dish.name}
-              description={dish.description}
-              price={dish.price}
-            />
-          ))}
-        </div>
-      </main>
-    </div>
-  )
+    <ThemeProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Menu />} />
+              <Route path="menu" element={<Menu />} />
+              <Route path="menu/:id" element={<DishPage />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
