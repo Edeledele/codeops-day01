@@ -45,6 +45,18 @@ body {
   font-weight: 600;
 }
 
+.cart-badge {
+  display: inline-block;
+  background: #e07a1f;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.2rem 0.45rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
 .chips {
   display: flex;
   gap: 0.5rem;
@@ -96,6 +108,12 @@ body {
   padding: 0.1rem 0.5rem;
   font-size: 0.8rem;
   margin: 0.25rem 0;
+}
+
+.item-count {
+  font-weight: 600;
+  color: #555;
+  margin: 0.5rem 0;
 }
 
 .order-confirmation {

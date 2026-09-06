@@ -20,9 +20,7 @@ function Dish({ id, name, price, spicy, currency }) {
 
   return (
     <div className="dish">
-      <h3>
-        {name} {count > 0 && `(${count})`}
-      </h3>
+      <h3>{name}</h3>
       <p>
         {price} {currency}
       </p>

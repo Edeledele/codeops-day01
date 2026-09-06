@@ -15,13 +15,6 @@ function Main() {
   const { data: dishes, loading, error } = useFetch("/dishes.json");
   const { total } = useContext(CartContext);
 
-  const searchRef = useRef(null);
-
-  // Focus the search box once, right after the DOM node exists.
-  useEffect(() => {
-    searchRef.current?.focus();
-  }, []);
-
   const filtered = useMemo(() => {
     if (!dishes) return [];
     return category === "All" ? dishes : dishes.filter((d) => d.category === category);
@@ -41,8 +34,6 @@ function Main() {
 
   return (
     <div className="menu">
-      <input ref={searchRef} type="search" placeholder="Search dishes..." />
-
       <CategoryBar categories={categories} selected={category} onSelect={handleSelectCategory} />
 
       {filtered.length === 0 ? (

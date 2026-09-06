@@ -1,24 +1,21 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ThemeContext } from "../components/Teamecontext";
+import { CartContext } from "../components/Cartcontext";
 
 function Header() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { items } = useContext(CartContext);
 
   return (
-    <header className={theme === "dark" ? "app-header dark" : "app-header"}>
+    <header className="app-header">
       <h1>Habesha Bites</h1>
       <nav>
         <NavLink to="/" end className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
           Menu
         </NavLink>
         <NavLink to="/checkout" className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
-          Checkout
+          Checkout{items.length > 0 && <span className="cart-badge">{items.length}</span>}
         </NavLink>
       </nav>
-      <button onClick={toggleTheme}>
-        Switch to {theme === "light" ? "dark" : "light"} mode
-      </button>
     </header>
   );
 }
