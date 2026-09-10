@@ -11,6 +11,7 @@ import { categories } from "../components/Categories";
 function Menu() {
     const [searchParams, setSearchParams] = useSearchParams();
     const category = searchParams.get("category") || "All";
+    const query = searchParams.get("q") || "";
     const searchRef = useRef(null);
     const { items, dispatch } = useCart();
 
@@ -22,15 +23,28 @@ function Menu() {
 
     const shown = useMemo(() => {
         if (!dishes) return [];
-        return category === "All" ? dishes : dishes.filter((d) => d.category === category);
-    }, [dishes, category]);
+        const byCategory = category === "All" ? dishes : dishes.filter((d) => d.category === category);
+        const needle = query.trim().toLowerCase();
+        if (!needle) return byCategory;
+        return byCategory.filter((d) => d.name.toLowerCase().includes(needle));
+    }, [dishes, category, query]);
+
+    function updateParams(next) {
+        const params = {};
+        if (category !== "All") params.category = category;
+        if (query) params.q = query;
+        Object.assign(params, next);
+        if (!params.category || params.category === "All") delete params.category;
+        if (!params.q) delete params.q;
+        setSearchParams(params);
+    }
 
     function handleSelectCategory(cat) {
-        if (cat === "All") {
-            setSearchParams({});
-        } else {
-            setSearchParams({ category: cat });
-        }
+        updateParams({ category: cat === "All" ? undefined : cat });
+    }
+
+    function handleSearchChange(e) {
+        updateParams({ q: e.target.value });
     }
 
     if (loading) return <p className="status">Loading the menu…</p>;
@@ -43,13 +57,19 @@ function Menu() {
                 ref={searchRef}
                 className="search-input"
                 type="search"
-                placeholder="Search isn't wired up yet — but this box grabs focus on load"
+                placeholder="Search dishes by name…"
                 aria-label="Search dishes"
+                value={query}
+                onChange={handleSearchChange}
             />
             <CategoryBar categories={categories} selected={category} onSelect={handleSelectCategory} />
 
             {shown.length === 0 ? (
-                <p className="status">No dishes in this category yet.</p>
+                <p className="status">
+                    {query
+                        ? `No dishes match "${query}".`
+                        : "No dishes in this category yet."}
+                </p>
             ) : (
                 <div className="dish-grid">
                     {shown.map((dish) => {
