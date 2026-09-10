@@ -3,6 +3,7 @@ import { useCart } from "../components/Cartcontext";
 
 const AREAS = ["Bole", "Piazza", "CMC", "Kazanchis", "Sarbet", "Gerji"];
 
+
 function validate(form) {
   const errors = {};
 
@@ -45,6 +46,7 @@ function Checkout() {
   const notesRef = useRef(null);
   const refs = { name: nameRef, phone: phoneRef, area: areaRef, notes: notesRef };
 
+  
   const errors = validate(form);
   const show = (field) => Boolean(touched[field] && errors[field]);
 
@@ -65,7 +67,6 @@ function Checkout() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     if (submitting) return;
 
     setSubmitError(null);
@@ -84,6 +85,7 @@ function Checkout() {
       setPlaced({ name: form.name, area: form.area });
       dispatch({ type: "clear" });
     } catch (err) {
+
       setSubmitError(err.message);
       nameRef.current?.focus();
     } finally {
@@ -219,8 +221,6 @@ function Checkout() {
           </p>
         )}
 
-        <p className="total">Total: {total} ETB</p>
-
         <button type="submit" className="add-btn" disabled={submitting || items.length === 0}>
           {buttonLabel}
         </button>
@@ -228,6 +228,7 @@ function Checkout() {
     </section>
   );
 }
+
 
 function placeOrder(form, items) {
   return new Promise((resolve, reject) => {
