@@ -110,43 +110,102 @@ body {
   margin: 0.25rem 0;
 }
 
-.item-count {
-  font-weight: 600;
+
+.status {
   color: #555;
-  margin: 0.5rem 0;
 }
 
-.order-confirmation {
+.status[role="status"] {
   background: #e6f4ea;
   color: #1e7e34;
   border: 1px solid #b7dfc0;
   border-radius: 6px;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
 }
 
-.dish-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.order-total {
-  font-weight: 600;
-  margin-top: 1rem;
-}
-
-.error {
+.status-error {
   color: #c0392b;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.remove-btn,
+.remove-btn-dish {
+  background: transparent;
+  border: 1px solid #c0392b;
+  color: #c0392b;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background: #e07a1f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.field {
+  margin-bottom: 0.9rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
   font-size: 0.9rem;
 }
 
-form input {
+.field input,
+.field select,
+.field textarea {
   display: block;
   width: 100%;
-  margin-bottom: 0.6rem;
   padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
 }
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: #c0392b;
+  border-width: 2px;
+}
+
+.field-error {
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0;
+}
+
+/* ---------- Footer ---------- */
 
 .app-footer {
   border-top: 1px solid #ddd;
