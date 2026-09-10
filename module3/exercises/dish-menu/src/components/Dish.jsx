@@ -1,20 +1,20 @@
-import { useState, useContext, memo } from "react";
+import { useContext, memo } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "../components/Cartcontext";
 
 function Dish({ id, name, price, spicy, currency }) {
-  const [count, setCount] = useState(0);
-  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { items, addToCart, removeFromCart } = useContext(CartContext);
+
+  
+  const inCart = items.some((i) => i.id === id);
 
   function handleAdd() {
-    if (count >= 1) return; // already added — do nothing
-    setCount(1);
+    if (inCart) return;
     addToCart({ id, name, price });
   }
 
   function handleRemove() {
-    if (count === 0) return; // nothing to remove
-    setCount(0);
+    if (!inCart) return;
     removeFromCart(id);
   }
 
@@ -24,14 +24,13 @@ function Dish({ id, name, price, spicy, currency }) {
       <p>
         {price} {currency}
       </p>
-      {/* Boolean(...) guard so a falsy-but-not-boolean spicy value (like 0)
-          never accidentally renders as text on screen. */}
+     
       {Boolean(spicy) && <span className="badge">🌶 Spicy</span>}
       <div className="dish-actions">
-        <button onClick={handleAdd} disabled={count >= 1}>
-          {count >= 1 ? "Added" : "Add"}
+        <button onClick={handleAdd} disabled={inCart}>
+          {inCart ? "Added" : "Add"}
         </button>
-        <button onClick={handleRemove} disabled={count === 0}>
+        <button onClick={handleRemove} disabled={!inCart}>
           Remove
         </button>
       </div>
@@ -52,6 +51,5 @@ Dish.defaultProps = {
   currency: "ETB",
 };
 
-// Memoized so a re-render of the parent list doesn't re-render every Dish
-// unless that specific dish's own props changed.
+
 export default memo(Dish);
