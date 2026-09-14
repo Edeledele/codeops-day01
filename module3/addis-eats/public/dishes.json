@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "name": "Doro Wat",
+    "category": "Stews",
+    "price": 320,
+    "description": "Slow-cooked spicy chicken stew with berbere and hard-boiled egg, served with injera.",
+    "image": "https://eggs.ca/wp-content/uploads/2024/06/EFC-doro-wat-hero-1280x720-1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Tibs",
+    "category": "Grills",
+    "price": 280,
+    "description": "Sauteed cubes of beef with onions, peppers, and rosemary.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK6e2Lskga-pHsQGw4Yh9h_AmYbVNBNTCnG1RZo1nehpEExx7KFVQU1so&s=10"
+  },
+  {
+    "id": "3",
+    "name": "Shiro",
+    "category": "Vegetarian",
+    "price": 180,
+    "description": "Spiced chickpea flour stew, a fasting-day favourite.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_OAbgGAVqS5xAvJ0QlfXy4UaH6KEaaeSpuyIquaiB8A&s=10"
+  },
+  {
+    "id": "4",
+    "name": "Kitfo",
+    "category": "Grills",
+    "price": 300,
+    "description": "Minced beef seasoned with mitmita and niter kibbeh, served lightly warmed.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQC1VoIVuL00ymDk8iSy5_Dbt9bioMldvOAeESkoGqJA&s=10"
+  },
+  {
+    "id": "5",
+    "name": "Gomen",
+    "category": "Vegetarian",
+    "price": 150,
+    "description": "Collard greens sauteed with garlic and ginger.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlm6mXGRW7-3ebJm5hsg9aJlox5TlTdCjv8MPUhcPZog&s=10"
+  },
+  {
+    "id": "6",
+    "name": "Misir Wat",
+    "category": "Vegetarian",
+    "price": 160,
+    "description": "Red lentils simmered in a berbere sauce.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXY6EvSKfN3CkfZT0_5k2IeD8mh0bzJjDr8UBzHz0m-g&s=10"
+  },
+  {
+    "id": "7",
+    "name": "Zilzil Tibs",
+    "category": "Grills",
+    "price": 310,
+    "description": "Thin strips of tender beef, pan-fried with peppers and onions.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo99vB1F6h4CdWCzHLcAP_aoa-UCPAZpsihvY3kbY6oA&s=10"
+  },
+  {
+    "id": "8",
+    "name": "Kikil",
+    "category": "Stews",
+    "price": 270,
+    "description": "Beef shank stew simmered with garlic, ginger, and lemon.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPptnihvqgSTKf35vWcLS4LUq35bd1ZFyaRGId3hPYEA&s=10"
+  },
+  {
+    "id": "9",
+    "name": "Azifa",
+    "category": "Vegetarian",
+    "price": 170,
+    "description": "Lentil salad mixed with mustard, lemon juice, onions, and herbs.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzMXqKj41RMCGjaCAmht5le1KiYpj1zHRvVUoUubxfg&s=10"
+  },
+  {
+    "id": "10",
+    "name": "Beyaynetu",
+    "category": "Vegetarian",
+    "price": 200,
+    "description": "A combo platter of various vegetarian dishes.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfbbuuXOga-TFi45T-G57ICeiVOvKhaKvJwBvEI-P35A&s=10"
+  }
+]
