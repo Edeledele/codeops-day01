@@ -29,7 +29,9 @@ export default function SignIn() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="e.g. Selam"
+        
         />
+        
         <Button type="submit">Sign in</Button>
       </form>
     </div>

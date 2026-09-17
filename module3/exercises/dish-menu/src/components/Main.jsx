@@ -20,7 +20,6 @@ function Main() {
     return category === "All" ? dishes : dishes.filter((d) => d.category === category);
   }, [dishes, category]);
 
-  // Keep the tab title in sync with how many dishes are currently shown.
   useEffect(() => {
     document.title = `${filtered.length} dishes`;
   }, [filtered.length]);

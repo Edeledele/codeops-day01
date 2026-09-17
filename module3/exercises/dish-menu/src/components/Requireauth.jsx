@@ -7,7 +7,6 @@ function RequireAuth({ children }) {
   const location = useLocation();
 
   if (!isAuthed) {
-    // Remember where the user was headed so Login can send them back.
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
