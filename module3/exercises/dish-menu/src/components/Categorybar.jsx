@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
-// Presentational only — owns no state. The parent (Main) decides what
-// "selected" means and what happens on selection, this just renders it.
+
 function CategoryBar({ categories, selected, onSelect }) {
   return (
     <div className="chips">
