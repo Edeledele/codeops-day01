@@ -4,13 +4,6 @@ import NavigationButton from "../components/NavigationButton";
 export default function HomePage() {
   return (
     <main className="home-page">
-      <nav className="page-nav">
-        <Link href="/">Home</Link>
-        <Link href="/menu">Menu</Link>
-        <Link href="/cart">Cart</Link>
-        <Link href="/checkout">Checkout</Link>
-      </nav>
-
       <section className="hero">
         <div className="hero-content">
           <p className="welcome-text">

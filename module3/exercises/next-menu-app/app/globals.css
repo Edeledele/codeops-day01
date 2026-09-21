@@ -738,3 +738,163 @@
     font-size: 36px;
   }
 }
+/* =================================
+   SITE HEADER / FOOTER (root layout)
+================================= */
+
+.site-header {
+  background: #222;
+  color: white;
+}
+
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-logo {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.site-header .page-nav {
+  margin-bottom: 0;
+}
+
+.site-header .page-nav a {
+  color: #ddd;
+}
+
+.site-header .page-nav a:hover {
+  color: #c58b32;
+}
+
+.site-footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* =================================
+   MENU LAYOUT (app/menu/layout.js)
+================================= */
+
+.menu-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.menu-sidebar {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-title {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.sidebar-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-button {
+  width: 100%;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #eee;
+  color: #222;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar-button:hover {
+  background: #ddd;
+}
+
+.sidebar-button.active {
+  background: #222;
+  color: white;
+}
+
+.menu-counter {
+  border-top: 1px solid #eee;
+  padding-top: 14px;
+  font-size: 14px;
+}
+
+.menu-counter-button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #b27620;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-counter-button:hover {
+  background: #935f19;
+}
+
+.menu-content {
+  min-width: 0;
+}
+
+.menu-content .dish-section {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 800px) {
+  .menu-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-sidebar {
+    position: static;
+  }
+}
+
+/* =================================
+   CHECKOUT PROMO BANNER
+================================= */
+
+.promo-banner {
+  background: #fff4e0;
+  border: 1px solid #c58b32;
+  color: #7a4e10;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

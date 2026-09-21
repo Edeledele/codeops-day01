@@ -1,37 +1,19 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
-import CategoryBar from "./categoryBar";
+import { Suspense } from "react";
 import DishList from "./DishList";
 
-export default function MenuPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+// Route segment config: revalidate this page every 60 seconds (ISR).
+// This does not touch any Request-time API (no cookies/headers/searchParams),
+// so the route is still prerendered - `next build` marks it static.
+export const revalidate = 60;
 
+export default function MenuPage() {
   return (
     <main>
       <h1>Menu</h1>
 
-      <nav>
-        <Link href="/">Home</Link>
-        {" | "}
-        <Link href="/menu">Menu</Link>
-        {" | "}
-        <Link href="/cart">Cart</Link>
-        {" | "}
-        <Link href="/checkout">Checkout</Link>
-      </nav>
-
-      <hr />
-
-      <CategoryBar
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-
-      <br />
-
-      <DishList selectedCategory={selectedCategory} />
+      <Suspense fallback={<p>Loading dishes...</p>}>
+        <DishList />
+      </Suspense>
     </main>
   );
 }

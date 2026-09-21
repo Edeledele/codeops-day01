@@ -20,13 +20,6 @@ export default function CartPage() {
     <main className="cart-page">
       <h1>Shopping Cart</h1>
 
-      <nav className="page-nav">
-        <Link href="/">Home</Link>
-        <Link href="/menu">Menu</Link>
-        <Link href="/cart">Cart</Link>
-        <Link href="/checkout">Checkout</Link>
-      </nav>
-
       <hr />
 
       {cart.length === 0 ? (
