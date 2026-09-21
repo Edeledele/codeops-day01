@@ -1,58 +1,49 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getDish, getDishIds } from "../../lib/dishes";
 
-const dishes = {
-  kitfo: {
-    name: "Kitfo",
-    price: 350,
-    category: "Ethiopian",
-    description: "A traditional Ethiopian dish made from minced beef.",
-  },
+export const dynamicParams = false;
 
-  "doro-wot": {
-    name: "Doro Wot",
-    price: 400,
-    category: "Ethiopian",
-    description: "A spicy Ethiopian chicken stew served with injera.",
-  },
+export async function generateStaticParams() {
+  const ids = await getDishIds();
 
-  pizza: {
-    name: "Pizza",
-    price: 450,
-    category: "Pizza",
-    description: "Freshly baked pizza with delicious toppings.",
-  },
+  return ids.map((id) => ({ id }));
+}
 
-  burger: {
-    name: "Burger",
-    price: 300,
-    category: "Fast Food",
-    description: "A juicy burger served with fresh vegetables.",
-  },
-};
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const dish = await getDish(id);
+
+  return {
+    title: dish ? `${dish.name} · Addis Eats` : "Dish not found · Addis Eats",
+  };
+}
 
 export default async function DishPage({ params }) {
   const { id } = await params;
-
-  const dish = dishes[id];
+  const dish = await getDish(id);
 
   if (!dish) {
     notFound();
   }
 
   return (
-    <main>
-      <h1>{dish.name}</h1>
+    <main className="dish-page">
+      <div className="dish-detail">
+        <div className="dish-detail-icon">{dish.icon}</div>
 
-      <p>Price: {dish.price} ETB</p>
+        <p className="dish-category">{dish.category}</p>
 
-      <p>Category: {dish.category}</p>
+        <h1>{dish.name}</h1>
 
-      <p>{dish.description}</p>
+        <p className="dish-description">{dish.description}</p>
 
-      <Link href="/menu">
-        Back to Menu
-      </Link>
+        <p className="price">{dish.price} ETB</p>
+
+        <Link href="/menu" className="primary-btn">
+          Back to Menu
+        </Link>
+      </div>
     </main>
   );
 }
