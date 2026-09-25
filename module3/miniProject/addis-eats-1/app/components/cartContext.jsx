@@ -9,15 +9,11 @@ export function CartProvider({ children }) {
 
   function addToCart(dish) {
     setCart((currentCart) => {
-      const existingItem = currentCart.find(
-        (item) => item.id === dish.id
-      );
+      const existingItem = currentCart.find((item) => item.id === dish.id);
 
       if (existingItem) {
         return currentCart.map((item) =>
-          item.id === dish.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === dish.id ? { ...item, quantity: item.quantity + 1 } : item,
         );
       }
 
@@ -34,10 +30,8 @@ export function CartProvider({ children }) {
   function increaseQuantity(id) {
     setCart((currentCart) =>
       currentCart.map((item) =>
-        item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      )
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
   }
 
@@ -45,28 +39,25 @@ export function CartProvider({ children }) {
     setCart((currentCart) =>
       currentCart
         .map((item) =>
-          item.id === id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity > 0),
     );
   }
 
   function removeFromCart(id) {
-    setCart((currentCart) =>
-      currentCart.filter((item) => item.id !== id)
-    );
+    setCart((currentCart) => currentCart.filter((item) => item.id !== id));
   }
 
-  const totalItems = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  function clearCart() {
+    setCart([]);
+  }
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
@@ -77,6 +68,7 @@ export function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
+        clearCart,
         totalItems,
         totalPrice,
       }}

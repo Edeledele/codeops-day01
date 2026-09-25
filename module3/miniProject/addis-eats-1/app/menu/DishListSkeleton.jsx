@@ -1,6 +1,3 @@
-// Fallback for the dish-list Suspense boundary. It has the same grid shape as
-// the real list so nothing jumps when the streamed content replaces it.
-
 export default function DishListSkeleton() {
   return (
     <div className="menu-grid" aria-hidden="true">

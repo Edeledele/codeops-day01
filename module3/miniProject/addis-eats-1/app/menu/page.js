@@ -9,7 +9,6 @@ export default function MenuPage() {
     <main className="menu-page">
       <section className="page-header">
         <h1>Our Menu</h1>
-
         <p>Fresh flavors from Addis, made for you.</p>
       </section>
 

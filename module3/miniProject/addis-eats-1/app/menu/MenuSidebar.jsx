@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getCategories } from "../lib/dishes";
 
-
 export default function MenuSidebar() {
   const categories = getCategories();
 
@@ -71,8 +70,8 @@ export default function MenuSidebar() {
         </p>
 
         <p className="sidebar-hint">
-          Open a dish and come back — these three values do not change,
-          because the layout never re-mounts.
+          Open a dish and come back — these three values do not change, because
+          the layout never re-mounts.
         </p>
       </div>
 

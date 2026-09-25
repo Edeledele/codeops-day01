@@ -5,9 +5,7 @@ export default function NotFound() {
     <main className="status-page">
       <h1>404</h1>
 
-      <p>
-        Sorry, we couldn't find that page.
-      </p>
+      <p>Sorry, we couldn't find that page.</p>
 
       <Link href="/" className="primary-btn">
         Back to Home
