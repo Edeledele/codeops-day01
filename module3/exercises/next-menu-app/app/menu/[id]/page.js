@@ -9,6 +9,20 @@ export function generateStaticParams() {
   return dishes.map((dish) => ({ id: dish.id }));
 }
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const dish = getDishById(id);
+  
+  if (!dish) {
+    return {};
+  }
+  
+  return {
+    title: dish.name,
+    description: `${dish.description} - ${dish.price} ETB`,
+  };
+}
+
 export default async function DishPage({ params }) {
   const { id } = await params;
 
@@ -18,8 +32,24 @@ export default async function DishPage({ params }) {
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MenuItem',
+    name: dish.name,
+    description: dish.description,
+    offers: {
+      '@type': 'Offer',
+      price: dish.price,
+      priceCurrency: 'ETB',
+    },
+  };
+
   return (
     <main className="detail-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="detail-card">
         <div className="detail-content">
           <p className="detail-category">{dish.category}</p>

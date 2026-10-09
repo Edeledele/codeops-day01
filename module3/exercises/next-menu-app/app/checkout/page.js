@@ -1,6 +1,11 @@
 import { cookies } from "next/headers";
 import CheckoutClient from "./CheckoutClient";
 
+export const metadata = {
+  title: "Checkout",
+  description: "Place your order securely.",
+};
+
 // Reading cookies() is a Request-time API: it can only be resolved per
 // request, so this turns the checkout route from static into dynamic.
 // Watch its marker change from "○ Static" to "ƒ Dynamic" in the

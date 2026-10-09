@@ -1,6 +1,11 @@
 import Link from "next/link";
 import NavigationButton from "../components/NavigationButton";
 
+export const metadata = {
+  title: "Home",
+  description: "Welcome to our Restaurant, enjoy our delicious food.",
+};
+
 export default function HomePage() {
   return (
     <main className="home-page">

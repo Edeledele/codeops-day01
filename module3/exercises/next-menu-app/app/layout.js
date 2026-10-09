@@ -4,7 +4,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Restaurant Menu",
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
+  title: {
+    template: '%s | Restaurant Menu',
+    default: 'Restaurant Menu',
+  },
   description: "Restaurant menu application",
 };
 
