@@ -26,20 +26,36 @@ export default async function DishPage({ params }) {
     notFound();
   }
 
+  const imageSrc = dish.imageUrl || dish.image;
+
   return (
     <main className="dish-page">
       <div className="dish-detail">
-        <div className="dish-detail-icon">{dish.icon || "🍽️"}</div>
-        <p className="dish-category">{dish.category}</p>
-        <h1>{dish.name}</h1>
-        <p className="dish-description">{dish.description}</p>
-        <p className="detail-price">{dish.price} ETB</p>
-        
-        <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
-          <AddToCartButton dish={dish} />
-          <Link href="/menu" className="secondary-btn">
-            Back to Menu
-          </Link>
+        {imageSrc ? (
+          <div className="dish-detail-image-wrapper">
+            <img
+              src={imageSrc}
+              alt={dish.name}
+              className="dish-detail-image"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        ) : (
+          <div className="dish-detail-icon">{dish.icon || "🍽️"}</div>
+        )}
+
+        <div className="dish-detail-info">
+          <p className="dish-category">{dish.category}</p>
+          <h1>{dish.name}</h1>
+          <p className="dish-description">{dish.fullDescription || dish.description}</p>
+          <p className="detail-price">{dish.priceFormatted || `${dish.price} ETB`}</p>
+
+          <div style={{ display: "flex", gap: "15px", marginTop: "24px", flexWrap: "wrap" }}>
+            <AddToCartButton dish={dish} />
+            <Link href="/menu" className="secondary-btn">
+              ← Back to Menu
+            </Link>
+          </div>
         </div>
       </div>
     </main>

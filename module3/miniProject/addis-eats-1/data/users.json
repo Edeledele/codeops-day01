@@ -1,0 +1,56 @@
+[
+  {
+    "id": "usr_customer_1",
+    "email": "customer@addiseats.com",
+    "name": "Abebe Bikila",
+    "password": "password123",
+    "role": "customer",
+    "phone": "0911234567",
+    "address": "Bole Medhanialem, Addis Ababa"
+  },
+  {
+    "id": "usr_staff_1",
+    "email": "staff@addiseats.com",
+    "name": "Chef Sara Tadesse",
+    "password": "staff123",
+    "role": "staff",
+    "phone": "0922334455",
+    "address": "Kitchen HQ, Kazanchis, Addis Ababa"
+  },
+  {
+    "id": "usr_customer_1792305750907",
+    "email": "eden@addiseats.com",
+    "name": "Eden Haile",
+    "password": "edenpass123",
+    "role": "customer",
+    "phone": "0911000000",
+    "address": "Addis Ababa"
+  },
+  {
+    "id": "usr_customer_1792305769005",
+    "email": "deviceonly@addiseats.com",
+    "name": "Device User",
+    "password": "mypassword",
+    "role": "customer",
+    "phone": "0933445566",
+    "address": "Piazza"
+  },
+  {
+    "id": "usr_customer_1792305914872",
+    "email": "abebe.test@addiseats.com",
+    "name": "Abebe Test",
+    "password": "pass123456",
+    "role": "customer",
+    "phone": "0911554433",
+    "address": "Bole"
+  },
+  {
+    "id": "usr_customer_1792306089233",
+    "email": "genettilahun222@gmail.com",
+    "name": "genetl tilahun",
+    "password": "212121",
+    "role": "customer",
+    "phone": "0901024218",
+    "address": "bole"
+  }
+]

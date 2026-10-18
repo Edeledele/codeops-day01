@@ -2,23 +2,39 @@ import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 
 export default function DishCard({ dish }) {
+  const imageSrc = dish.imageUrl || dish.image;
+
   return (
     <article className="dish-card">
-      <p className="dish-category">{dish.category}</p>
+      {imageSrc && (
+        <div className="dish-image-wrapper">
+          <img
+            src={imageSrc}
+            alt={dish.name}
+            className="dish-image"
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
+          <span className="dish-category-badge">{dish.category}</span>
+        </div>
+      )}
 
-      <h2>{dish.name}</h2>
+      <div className="dish-card-body">
+        {!imageSrc && <p className="dish-category">{dish.category}</p>}
 
-      <p className="dish-description">{dish.description}</p>
+        <h2>{dish.name}</h2>
 
-      <div className="dish-bottom">
-        <span className="price">{dish.price} ETB</span>
+        <p className="dish-description">{dish.description}</p>
 
-        <AddToCartButton dish={dish} />
+        <div className="dish-bottom">
+          <span className="price">{dish.priceFormatted || `${dish.price} ETB`}</span>
+          <AddToCartButton dish={dish} />
+        </div>
+
+        <Link href={`/menu/${dish.id}`} className="details-btn">
+          View Details
+        </Link>
       </div>
-
-      <Link href={`/menu/${dish.id}`} className="details-btn">
-        View Details
-      </Link>
     </article>
   );
 }

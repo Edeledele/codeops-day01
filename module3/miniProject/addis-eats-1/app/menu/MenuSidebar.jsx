@@ -1,45 +1,67 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getCategories } from "../lib/dishes";
 
 export default function MenuSidebar() {
-  const categories = getCategories();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
 
-  const [activeCategory, setActiveCategory] = useState("All");
+  const currentCategory = searchParams.get("category") || "All";
+  const categories = ["All", ...getCategories()];
+
   const [note, setNote] = useState("");
   const [clicks, setClicks] = useState(0);
-
   const [mountedAt, setMountedAt] = useState(null);
 
   useEffect(() => {
-    setMountedAt(new Date().toLocaleTimeString("en-GB", { hour12: false }));
+    const timer = setTimeout(() => {
+      setMountedAt(new Date().toLocaleTimeString("en-GB", { hour12: false }));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleCategoryClick = (category) => {
+    setClicks((c) => c + 1);
+
+    const params = new URLSearchParams(searchParams.toString());
+    if (category === "All") {
+      params.delete("category");
+    } else {
+      params.set("category", category);
+    }
+    params.set("page", "1");
+
+    startTransition(() => {
+      router.push(`/menu?${params.toString()}`);
+    });
+  };
 
   return (
     <aside className="menu-sidebar">
       <h2 className="sidebar-title">Browse</h2>
 
       <ul className="sidebar-categories">
-        {["All", ...categories].map((category) => (
-          <li key={category}>
-            <button
-              type="button"
-              className={
-                category === activeCategory
-                  ? "sidebar-chip active"
-                  : "sidebar-chip"
-              }
-              onClick={() => {
-                setActiveCategory(category);
-                setClicks((c) => c + 1);
-              }}
-            >
-              {category}
-            </button>
-          </li>
-        ))}
+        {categories.map((category) => {
+          const isActive =
+            category.toLowerCase() === currentCategory.toLowerCase();
+
+          return (
+            <li key={category}>
+              <button
+                type="button"
+                className={isActive ? "sidebar-chip active" : "sidebar-chip"}
+                onClick={() => handleCategoryClick(category)}
+                aria-pressed={isActive}
+              >
+                {category}
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       <div className="sidebar-note">

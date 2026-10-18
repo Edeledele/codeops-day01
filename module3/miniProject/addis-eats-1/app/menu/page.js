@@ -1,10 +1,16 @@
 import { Suspense } from "react";
-import DishList from "./DishList";
+import MenuClientView from "./MenuClientView";
 import DishListSkeleton from "./DishListSkeleton";
+import { getPagedDishes } from "../lib/dishes";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
-export default function MenuPage() {
+export default async function MenuPage({ searchParams }) {
+  const resolvedParams = await searchParams;
+  const page = Math.max(1, parseInt(resolvedParams?.page || "1", 10));
+  const category = resolvedParams?.category || "All";
+  const initialPageData = await getPagedDishes({ page, limit: 4, category });
+
   return (
     <main className="menu-page">
       <section className="page-header">
@@ -13,7 +19,7 @@ export default function MenuPage() {
       </section>
 
       <Suspense fallback={<DishListSkeleton />}>
-        <DishList />
+        <MenuClientView initialPageData={initialPageData} />
       </Suspense>
     </main>
   );

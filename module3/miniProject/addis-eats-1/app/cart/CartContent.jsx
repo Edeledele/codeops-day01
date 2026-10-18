@@ -26,7 +26,16 @@ export default function CartContent() {
       {cart.map((item) => (
         <div className="cart-item" key={item.id}>
           <div className="cart-item-info">
-            <div className="cart-icon">{item.icon || "🍽️"}</div>
+            {item.imageUrl || item.image ? (
+              <img
+                src={item.imageUrl || item.image}
+                alt={item.name}
+                className="cart-item-image"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="cart-icon">{item.icon || "🍽️"}</div>
+            )}
             <div>
               <h3>{item.name}</h3>
               <p>{item.price} ETB each</p>
@@ -34,10 +43,27 @@ export default function CartContent() {
           </div>
 
           <div className="quantity">
-            <button onClick={() => decreaseQuantity(item.id)}>−</button>
-            <strong>{item.quantity}</strong>
-            <button onClick={() => increaseQuantity(item.id)}>+</button>
-            <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
+            <button
+              type="button"
+              aria-label={`Decrease quantity of ${item.name}`}
+              onClick={() => decreaseQuantity(item.id)}
+            >
+              −
+            </button>
+            <strong aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</strong>
+            <button
+              type="button"
+              aria-label={`Increase quantity of ${item.name}`}
+              onClick={() => increaseQuantity(item.id)}
+            >
+              +
+            </button>
+            <button
+              type="button"
+              className="remove-btn"
+              aria-label={`Remove ${item.name} from cart`}
+              onClick={() => removeFromCart(item.id)}
+            >
               Remove
             </button>
           </div>
