@@ -11,15 +11,7 @@ const USERS_FILE_PATH = path.join(process.cwd(), "data", "users.json");
 
 // Global default seed users
 const defaultUsers = [
-  {
-    id: "usr_customer_1",
-    email: "customer@addiseats.com",
-    name: "Abebe Bikila",
-    password: "password123",
-    role: "customer",
-    phone: "0911234567",
-    address: "Bole Medhanialem, Addis Ababa",
-  },
+
   {
     id: "usr_staff_1",
     email: "staff@addiseats.com",

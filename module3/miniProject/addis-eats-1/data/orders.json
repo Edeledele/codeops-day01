@@ -1,0 +1,171 @@
+[
+  {
+    "id": "ord-101",
+    "userId": "usr_customer_1",
+    "customerName": "Abebe Bikila",
+    "phone": "0911234567",
+    "deliveryAddress": "Bole Medhanialem, House 412, Addis Ababa",
+    "deliveryZone": "Bole, Addis Ababa",
+    "items": [
+      {
+        "id": "kitfo",
+        "name": "Kitfo",
+        "price": 350,
+        "quantity": 1
+      },
+      {
+        "id": "doro-wot",
+        "name": "Doro Wot",
+        "price": 400,
+        "quantity": 1
+      },
+      {
+        "id": "spris",
+        "name": "Addis Spris Juice",
+        "price": 150,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 900,
+    "deliveryFee": 50,
+    "total": 950,
+    "status": "out_for_delivery",
+    "estimatedMinutes": 9,
+    "driver": {
+      "name": "Dawit Haile",
+      "phone": "0922334455",
+      "vehicle": "Bajaj Express #34"
+    },
+    "updatedAt": "2026-10-18T07:45:14.228Z",
+    "pollCount": 0,
+    "lastPolledAt": "10:45:14"
+  },
+  {
+    "id": "ord-102",
+    "userId": "usr_customer_2",
+    "customerName": "Bethlehem Assefa",
+    "phone": "0944556677",
+    "deliveryAddress": "CMC Towers, Addis Ababa",
+    "deliveryZone": "CMC, Addis Ababa",
+    "items": [
+      {
+        "id": "shiro",
+        "name": "Shiro",
+        "price": 250,
+        "quantity": 2
+      }
+    ],
+    "subtotal": 500,
+    "deliveryFee": 50,
+    "total": 550,
+    "status": "preparing",
+    "estimatedMinutes": 17,
+    "driver": {
+      "name": "Yohannes M.",
+      "phone": "0911998877",
+      "vehicle": "Delivery Van #12"
+    },
+    "updatedAt": "2026-10-18T07:45:19.262Z",
+    "pollCount": 0,
+    "lastPolledAt": "10:45:19"
+  },
+  {
+    "id": "ord-103",
+    "userId": "usr_customer_1792306089233",
+    "customerName": "genetl tilahun",
+    "phone": "0901024218",
+    "deliveryAddress": "Bole, Addis Ababa",
+    "deliveryZone": "Bole, Addis Ababa",
+    "items": [
+      {
+        "id": "doro-wot",
+        "name": "Doro Wot",
+        "price": 400,
+        "quantity": 1
+      },
+      {
+        "id": "spris",
+        "name": "Addis Spris Juice",
+        "price": 150,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 550,
+    "deliveryFee": 50,
+    "total": 600,
+    "status": "out_for_delivery",
+    "estimatedMinutes": 9,
+    "driver": {
+      "name": "Dawit Haile",
+      "phone": "0922334455",
+      "vehicle": "Bajaj Express #34"
+    },
+    "updatedAt": "2026-10-18T07:45:11.079Z",
+    "pollCount": 1,
+    "lastPolledAt": "10:45:11"
+  },
+  {
+    "id": "ord-104",
+    "userId": "usr_customer_1792305750907",
+    "customerName": "Eden Haile",
+    "phone": "0911000000",
+    "deliveryAddress": "Addis Ababa",
+    "deliveryZone": "Bole, Addis Ababa",
+    "items": [
+      {
+        "id": "kitfo",
+        "name": "Kitfo",
+        "price": 350,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 350,
+    "deliveryFee": 50,
+    "total": 400,
+    "status": "delivered",
+    "estimatedMinutes": 1,
+    "driver": {
+      "name": "Yohannes M.",
+      "phone": "0911998877",
+      "vehicle": "Delivery Van #12"
+    },
+    "updatedAt": "2026-10-18T07:45:07.166Z",
+    "pollCount": 0,
+    "lastPolledAt": "10:45:07"
+  },
+  {
+    "id": "ord-386",
+    "userId": "usr_customer_1792306089233",
+    "customerName": "genetl tilahun",
+    "phone": "0901024218",
+    "deliveryAddress": "bole",
+    "deliveryZone": "Addis Ababa",
+    "items": [
+      {
+        "id": "1",
+        "name": "Doro Wat",
+        "price": 450,
+        "quantity": 1
+      },
+      {
+        "id": "2",
+        "name": "Shiro Tegabino",
+        "price": 280,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 730,
+    "deliveryFee": 50,
+    "total": 780,
+    "status": "received",
+    "estimatedMinutes": 25,
+    "driver": {
+      "name": "Dawit Haile",
+      "phone": "0922334455",
+      "vehicle": "Bajaj Express #34"
+    },
+    "updatedAt": "2026-10-18T07:44:53.730Z",
+    "pollCount": 48,
+    "lastPolledAt": "10:44:56"
+  }
+]

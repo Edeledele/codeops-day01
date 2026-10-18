@@ -1,6 +1,7 @@
-/**
- * In-memory order storage and helper functions for Addis Eats order tracking.
- */
+import fs from "fs";
+import path from "path";
+
+const ORDERS_FILE_PATH = path.join(process.cwd(), "data", "orders.json");
 
 const ORDER_STAGES = [
   { key: "received", label: "Order Received", desc: "Received by kitchen" },
@@ -9,10 +10,52 @@ const ORDER_STAGES = [
   { key: "delivered", label: "Delivered", desc: "Delivered! Melkam Mikig (Enjoy your meal)" },
 ];
 
-// Global in-memory store for orders during runtime
-const globalOrders = globalThis.__addisEatsOrders || (globalThis.__addisEatsOrders = new Map());
+function loadOrdersFromFile() {
+  const map = new Map();
+  try {
+    if (fs.existsSync(ORDERS_FILE_PATH)) {
+      const data = fs.readFileSync(ORDERS_FILE_PATH, "utf-8");
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed)) {
+        parsed.forEach((order) => {
+          if (order && order.id) {
+            map.set(order.id, order);
+          }
+        });
+      }
+    }
+  } catch (e) {
+    console.error("Error reading orders file:", e);
+  }
+  return map;
+}
+
+export function persistOrders() {
+  try {
+    const dir = path.dirname(ORDERS_FILE_PATH);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    const list = Array.from(globalOrders.values());
+    fs.writeFileSync(ORDERS_FILE_PATH, JSON.stringify(list, null, 2), "utf-8");
+  } catch (e) {
+    console.error("Error saving orders file:", e);
+  }
+}
+
+// Global in-memory store synchronized with data/orders.json
+const globalOrders =
+  globalThis.__addisEatsOrders || (globalThis.__addisEatsOrders = loadOrdersFromFile());
 
 function seedDefaultOrders() {
+  const fromFile = loadOrdersFromFile();
+  for (const [key, val] of fromFile.entries()) {
+    if (!globalOrders.has(key)) {
+      globalOrders.set(key, val);
+    }
+  }
+
+  let changed = false;
   if (!globalOrders.has("ord-101")) {
     globalOrders.set("ord-101", {
       id: "ord-101",
@@ -39,6 +82,7 @@ function seedDefaultOrders() {
       updatedAt: new Date().toISOString(),
       pollCount: 0,
     });
+    changed = true;
   }
 
   if (!globalOrders.has("ord-102")) {
@@ -65,6 +109,11 @@ function seedDefaultOrders() {
       updatedAt: new Date().toISOString(),
       pollCount: 0,
     });
+    changed = true;
+  }
+
+  if (changed) {
+    persistOrders();
   }
 }
 
@@ -102,6 +151,7 @@ export async function advanceOrderStatus(id) {
   order.updatedAt = new Date().toISOString();
   order.lastPolledAt = new Date().toLocaleTimeString("en-GB", { hour12: false });
   order.estimatedMinutes = Math.max(0, 25 - nextIndex * 8);
+  persistOrders();
 
   return {
     ...order,
@@ -118,6 +168,7 @@ export async function resetOrderStatus(id) {
   order.updatedAt = new Date().toISOString();
   order.lastPolledAt = new Date().toLocaleTimeString("en-GB", { hour12: false });
   order.estimatedMinutes = 25;
+  persistOrders();
 
   return {
     ...order,
@@ -151,6 +202,7 @@ export async function createOrder(orderData) {
   };
 
   globalOrders.set(newId, order);
+  persistOrders();
   return order;
 }
 
@@ -201,6 +253,7 @@ export async function cancelOrderWithOwnershipCheck(orderId, sessionUser) {
   order.status = "cancelled";
   order.updatedAt = new Date().toISOString();
   order.lastPolledAt = new Date().toLocaleTimeString("en-GB", { hour12: false });
+  persistOrders();
 
   return order;
 }
@@ -225,6 +278,7 @@ export async function updateOrderNoteWithOwnershipCheck(orderId, note, sessionUs
 
   order.kitchenNote = String(note || "").slice(0, 200);
   order.updatedAt = new Date().toISOString();
+  persistOrders();
   return order;
 }
 
