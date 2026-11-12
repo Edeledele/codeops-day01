@@ -1,0 +1,29 @@
+
+### 1. Get all dishes
+GET http://localhost:3000/api/dishes
+
+### 2. Get dish by ID
+GET http://localhost:3000/api/dishes/1
+
+### 3. Get dishes for restaurant ID 1
+GET http://localhost:3000/api/dishes?restaurantId=1
+
+### 4. Create a new dish
+POST http://localhost:3000/api/dishes
+Content-Type: application/json
+
+{
+  "name": "Chechebsa",
+  "priceSantim": 30000,
+  "restaurantId": 1
+}
+
+### 5. Reject a dish with a nonexistent restaurant
+POST http://localhost:3000/api/dishes
+Content-Type: application/json
+
+{
+  "name": "Invalid Restaurant Dish",
+  "priceSantim": 20000,
+  "restaurantId": 999
+}
